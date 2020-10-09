@@ -1,0 +1,59 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'org.jetbrains.dokka'
+    id 'maven-publish'
+    id 'com.jfrog.bintray'
+}
+
+
+android {
+    compileSdkVersion buildConfig.compileSdk
+    buildToolsVersion buildConfig.buildTools
+
+    buildFeatures {
+        dataBinding rootProject.ext.buildConfig.dataBinding
+    }
+
+    defaultConfig {
+        minSdkVersion buildConfig.minSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+    compileOptions {
+        sourceCompatibility buildConfig.jvm
+        targetCompatibility buildConfig.jvm
+    }
+    kotlinOptions {
+        jvmTarget = buildConfig.jvm
+    }
+}
+
+dependencies {
+    api fileTree(dir: "libs", include: ["*.jar"])
+    api "org.jetbrains.kotlin:kotlin-stdlib:$pluginConfig.kotlin"
+    api "androidx.core:core-ktx:$deps.ktxCore"
+    api "androidx.appcompat:appcompat:$deps.appcompat"
+    api "com.google.android.material:material:$deps.material"
+    api "androidx.constraintlayout:constraintlayout:$deps.constraintLayout"
+
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:$deps.lifecycle"
+    api "androidx.lifecycle:lifecycle-viewmodel-savedstate:$deps.lifecycle"
+    api "androidx.lifecycle:lifecycle-livedata-ktx:$deps.lifecycle"
+    api "androidx.lifecycle:lifecycle-common-java8:$deps.lifecycle"
+    implementation "androidx.startup:startup-runtime:1.0.0-beta01"
+
+    api "androidx.navigation:navigation-fragment-ktx:$deps.navigation"
+    api "androidx.navigation:navigation-ui-ktx:$deps.navigation"
+
+    testImplementation "junit:junit:$testConfig.junit"
+    androidTestImplementation "androidx.test.ext:junit:$testConfig.androidJunit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$testConfig.espresso"
+
+    api 'com.drakeet.multitype:multitype:4.2.0'
+    implementation 'com.orhanobut:logger:2.2.0'
+    api 'com.jakewharton.timber:timber:4.7.1'
+}
+apply from: '../../publish.gradle'

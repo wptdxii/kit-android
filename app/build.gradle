@@ -1,0 +1,54 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdkVersion buildConfig.compileSdk
+    buildToolsVersion buildConfig.buildTools
+    buildFeatures {
+        dataBinding rootProject.ext.buildConfig.dataBinding
+    }
+
+    defaultConfig {
+        applicationId "com.dxii.doraemon"
+        minSdkVersion buildConfig.minSdk
+        targetSdkVersion buildConfig.targetSdk
+        versionCode buildConfig.versionCode
+        versionName buildConfig.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility buildConfig.jvm
+        targetCompatibility buildConfig.jvm
+    }
+    kotlinOptions {
+        jvmTarget = buildConfig.jvm
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation project(':kit:basekit')
+    implementation project(":kit:uikit")
+
+    testImplementation "junit:junit:$testConfig.junit"
+    androidTestImplementation "androidx.test.ext:junit:$testConfig.androidJunit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$testConfig.espresso"
+
+    // hilt
+    implementation "com.google.dagger:hilt-android:$deps.hilt"
+    kapt "com.google.dagger:hilt-android-compiler:$deps.hilt"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$deps.hiltViewModel"
+    kapt "androidx.hilt:hilt-compiler:$deps.hiltViewModel"
+}
