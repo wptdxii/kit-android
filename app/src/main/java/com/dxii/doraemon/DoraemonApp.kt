@@ -8,4 +8,9 @@ import dagger.hilt.android.HiltAndroidApp
  * @date 2020-09-04
  */
 @HiltAndroidApp
-class DoraemonApp : BaseApplication()
+class DoraemonApp : BaseApplication() {
+    override fun onCreate() {
+        super.onCreate()
+        registerActivityLifecycleCallbacks(ActivityLifecycleCallbacksImpl())
+    }
+}
