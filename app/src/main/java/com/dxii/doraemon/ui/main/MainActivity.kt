@@ -35,11 +35,7 @@ class MainActivity : BaseActivity() {
             val navHostFragment = NavHostFragment.create(R.navigation.nav_graph)
             supportFragmentManager.commitNow {
                 setPrimaryNavigationFragment(navHostFragment)
-                add(
-                    R.id.navHostFragmentContainer,
-                    navHostFragment,
-                    TAG
-                )
+                add(R.id.navHostFragmentContainer, navHostFragment, TAG)
             }
         }
     }

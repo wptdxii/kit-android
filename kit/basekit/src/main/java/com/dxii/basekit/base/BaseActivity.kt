@@ -13,12 +13,14 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bindBars()
+        immersion()
     }
 
-    protected open fun bindBars() {
+    protected open fun immersion() {
         immersionBar {
             statusBarDarkFont(true)
+            navigationBarDarkIcon(true)
+            navigationBarColor(android.R.color.white)
         }
     }
 }

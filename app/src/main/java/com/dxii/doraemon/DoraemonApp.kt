@@ -4,7 +4,7 @@ import com.dxii.basekit.base.BaseApplication
 import dagger.hilt.android.HiltAndroidApp
 
 /**
- * @author idxii
+ * @author dxii
  * @date 2020-09-04
  */
 @HiltAndroidApp
