@@ -9,3 +9,4 @@ include ':kit:basekit'
 include ':kit:uikit'
 include ':app'
 rootProject.name = "Doraemon"
+include ':kia'

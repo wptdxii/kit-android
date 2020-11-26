@@ -6,7 +6,6 @@ plugins {
     id 'com.jfrog.bintray'
 }
 
-
 android {
     compileSdkVersion buildConfig.compileSdk
     buildToolsVersion buildConfig.buildTools
@@ -22,8 +21,8 @@ android {
         consumerProguardFiles "consumer-rules.pro"
     }
     compileOptions {
-        sourceCompatibility buildConfig.jvm
-        targetCompatibility buildConfig.jvm
+        sourceCompatibility = buildConfig.jvm
+        targetCompatibility = buildConfig.jvm
     }
     kotlinOptions {
         jvmTarget = buildConfig.jvm
