@@ -3,13 +3,15 @@ buildscript {
     apply from: "config.gradle"
     ext {
         pluginConfig.kotlin = '1.4.20'
+        pluginConfig.kotlin = '1.4.20'
+        pluginConfig.kotlin = '1.4.20'
     }
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.0-alpha16'
+        classpath 'com.android.tools.build:gradle:7.0.0-alpha01'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$pluginConfig.kotlin"
         classpath 'org.jetbrains.dokka:dokka-gradle-plugin:0.10.1'
         classpath "com.google.dagger:hilt-android-gradle-plugin:$deps.hilt"

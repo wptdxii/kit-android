@@ -1,0 +1,37 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdkVersion buildConfig.compileSdk
+    buildToolsVersion buildConfig.buildTools
+
+    defaultConfig {
+        minSdkVersion buildConfig.minSdk
+        targetSdkVersion buildConfig.targetSdk
+        versionCode buildConfig.versionCode
+        versionName buildConfig.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    compileOptions {
+        sourceCompatibility = buildConfig.jvm
+        targetCompatibility = buildConfig.jvm
+    }
+    kotlinOptions {
+        jvmTarget = buildConfig.jvm
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:${pluginConfig.kotlin}"
+    implementation "androidx.core:core-ktx:$deps.ktxCore"
+    api project(":core:base")
+
+    testImplementation "junit:junit:$testConfig.junit"
+    androidTestImplementation "androidx.test.ext:junit:$testConfig.androidJunit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$testConfig.espresso"
+}

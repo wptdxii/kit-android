@@ -5,8 +5,10 @@ pluginManagement {
     }
 }
 
-include ':kit:basekit'
-include ':kit:uikit'
+include ':core:base'
+include ':core:uikit'
+include ':core:network'
+include ':common'
+include ':kia'
 include ':app'
 rootProject.name = "Doraemon"
-include ':kia'

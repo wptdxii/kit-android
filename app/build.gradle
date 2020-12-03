@@ -39,8 +39,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation project(':kit:basekit')
-    implementation project(":kit:uikit")
+    implementation project(':common')
+    implementation project(":core:uikit")
 
     testImplementation "junit:junit:$testConfig.junit"
     androidTestImplementation "androidx.test.ext:junit:$testConfig.androidJunit"

@@ -46,15 +46,15 @@ dependencies {
     api "androidx.navigation:navigation-fragment-ktx:$deps.navigation"
     api "androidx.navigation:navigation-ui-ktx:$deps.navigation"
 
-    testImplementation "junit:junit:$testConfig.junit"
-    androidTestImplementation "androidx.test.ext:junit:$testConfig.androidJunit"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$testConfig.espresso"
-
     api 'com.drakeet.multitype:multitype:4.2.0'
     implementation 'com.orhanobut:logger:2.2.0'
     api 'com.jakewharton.timber:timber:4.7.1'
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.5'
     api "com.gyf.immersionbar:immersionbar:${deps.immersionbar}"
     api "com.gyf.immersionbar:immersionbar-ktx:${deps.immersionbar}"
+
+    testImplementation "junit:junit:$testConfig.junit"
+    androidTestImplementation "androidx.test.ext:junit:$testConfig.androidJunit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$testConfig.espresso"
 }
 apply from: '../../publish.gradle'

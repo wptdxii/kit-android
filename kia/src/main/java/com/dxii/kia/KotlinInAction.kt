@@ -1,6 +1,13 @@
 package com.dxii.kia
 
 fun main() {
-//    println("12.345-6.A".split("[.\\-]".toRegex()))
-    println("12.345-6.A".split(".", "-"))
+}
+
+class CountingSet<T>(val innerSet: MutableSet<T> = HashSet()) : MutableSet<T> by innerSet {
+    var objectAdded = 0
+
+    override fun add(element: T): Boolean {
+        objectAdded++
+        return innerSet.add(element)
+    }
 }
