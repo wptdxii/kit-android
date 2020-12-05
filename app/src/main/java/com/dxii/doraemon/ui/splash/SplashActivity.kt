@@ -2,7 +2,6 @@ package com.dxii.doraemon.ui.splash
 
 import android.os.Bundle
 import com.dxii.basekit.base.BaseActivity
-import com.dxii.basekit.ext.startActivity
 import com.dxii.doraemon.ui.main.MainActivity
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
@@ -23,7 +22,7 @@ class SplashActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         MainScope().launch {
             delay(PERSISTENT_PERIOD)
-            startActivity(MainActivity::class.java)
+            MainActivity.start(this@SplashActivity)
             finish()
         }
     }

@@ -11,7 +11,7 @@ import com.drakeet.multitype.MultiTypeAdapter
 import com.dxii.basekit.base.BaseFragment
 import com.dxii.basekit.ext.autoCleared
 import com.dxii.basekit.ext.binding
-import com.dxii.basekit.ext.startActivity
+import com.dxii.basekit.ext.start
 import com.dxii.doraemon.R
 import com.dxii.doraemon.databinding.FragmentMainBinding
 import com.dxii.uikit.recyclerview.GridDividerItemDecoration
@@ -63,7 +63,7 @@ class MainFragment : BaseFragment() {
 
     private fun bindRecyclerView(recyclerView: RecyclerView) {
         multiTypeAdapter = MultiTypeAdapter()
-        multiTypeAdapter.register(ModuleItemViewBinder { startActivity(it.clazz) })
+        multiTypeAdapter.register(ModuleItemViewBinder { start(it.clazz) })
 
         recyclerView.apply {
             addItemDecoration(GridDividerItemDecoration(context, SPAN_COUNT))
