@@ -1,7 +1,6 @@
 ext.buildConfig = [
         'versionName': "0.0.1",
         'versionCode': 1,
-        'buildTools' : "30.0.2",
         'jvm'        : JavaVersion.VERSION_1_8,
         'minSdk'     : 23,
         'targetSdk'  : 29,
@@ -10,7 +9,8 @@ ext.buildConfig = [
 ]
 
 ext.pluginConfig = [
-        'kotlin': "1.4.20",
+        'kotlin': "1.4.21",
+        'ktlint': "0.40.0",
 ]
 
 ext.deps = [

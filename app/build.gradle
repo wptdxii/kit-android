@@ -8,13 +8,13 @@ plugins {
 
 android {
     compileSdkVersion buildConfig.compileSdk
-    buildToolsVersion buildConfig.buildTools
+
     buildFeatures {
         dataBinding rootProject.ext.buildConfig.dataBinding
     }
 
     defaultConfig {
-        applicationId "com.dxii.doraemon"
+        applicationId "com.rocbillow.doraemon"
         minSdkVersion buildConfig.minSdk
         targetSdkVersion buildConfig.targetSdk
         versionCode buildConfig.versionCode

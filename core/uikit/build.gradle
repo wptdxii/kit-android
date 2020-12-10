@@ -5,7 +5,6 @@ plugins {
 
 android {
     compileSdkVersion buildConfig.compileSdk
-    buildToolsVersion buildConfig.buildTools
 
     defaultConfig {
         minSdkVersion buildConfig.minSdk
@@ -33,5 +32,4 @@ dependencies {
     testImplementation "junit:junit:$testConfig.junit"
     androidTestImplementation "androidx.test.ext:junit:$testConfig.androidJunit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$testConfig.espresso"
-
 }
