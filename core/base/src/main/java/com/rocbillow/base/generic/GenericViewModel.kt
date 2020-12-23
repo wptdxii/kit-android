@@ -1,4 +1,4 @@
-package com.rocbillow.base.base
+package com.rocbillow.base.generic
 
 import androidx.lifecycle.ViewModel
 
@@ -6,4 +6,4 @@ import androidx.lifecycle.ViewModel
  * @author rocbillow
  * @date 2020-08-07
  */
-abstract class BaseViewModel : ViewModel()
+abstract class GenericViewModel : ViewModel()

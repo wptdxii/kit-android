@@ -8,11 +8,11 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.drakeet.multitype.MultiTypeAdapter
-import com.rocbillow.base.base.BaseFragment
 import com.rocbillow.base.ext.autoCleared
 import com.rocbillow.base.ext.binding
 import com.rocbillow.base.ext.start
 import com.rocbillow.doraemon.R
+import com.rocbillow.common.base.BaseFragment
 import com.rocbillow.doraemon.databinding.FragmentMainBinding
 import com.rocbillow.uikit.recyclerview.GridDividerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint

@@ -5,7 +5,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.0-alpha02'
+        classpath 'com.android.tools.build:gradle:7.0.0-alpha03'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$pluginConfig.kotlin"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$deps.hilt"
         classpath 'org.jetbrains.dokka:dokka-gradle-plugin:0.10.1'
@@ -32,6 +32,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
     }
     task javadoc(type: Javadoc) {
         options.encoding = "utf-8"

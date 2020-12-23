@@ -1,4 +1,4 @@
-package com.rocbillow.base.base
+package com.rocbillow.base.generic
 
 import androidx.fragment.app.DialogFragment
 
@@ -6,4 +6,4 @@ import androidx.fragment.app.DialogFragment
  * @author rocbillow
  * @date 2020-08-07
  */
-abstract class BaseDialogFragment : DialogFragment()
+abstract class GenericDialogFragment : DialogFragment()

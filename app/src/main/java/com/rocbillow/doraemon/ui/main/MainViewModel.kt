@@ -3,7 +3,7 @@ package com.rocbillow.doraemon.ui.main
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.rocbillow.base.base.BaseViewModel
+import com.rocbillow.common.base.BaseViewModel
 import com.rocbillow.doraemon.ui.sunflower.GardenActivity
 
 /**

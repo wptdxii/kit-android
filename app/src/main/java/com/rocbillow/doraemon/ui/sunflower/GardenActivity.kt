@@ -1,7 +1,7 @@
 package com.rocbillow.doraemon.ui.sunflower
 
 import android.os.Bundle
-import com.rocbillow.base.base.BaseActivity
+import com.rocbillow.common.base.BaseActivity
 
 /**
  * @author rocbillow

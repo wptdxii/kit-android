@@ -1,4 +1,4 @@
-package com.rocbillow.base.base
+package com.rocbillow.base.generic
 
 import android.app.Application
 import androidx.annotation.Nullable
@@ -8,5 +8,5 @@ import androidx.lifecycle.AndroidViewModel
  * @author rocbillow
  * @date 2020-08-07
  */
-abstract class BaseAndroidViewModel(@Nullable application: Application) :
+abstract class GenericAndroidViewModel(@Nullable application: Application) :
   AndroidViewModel(application)

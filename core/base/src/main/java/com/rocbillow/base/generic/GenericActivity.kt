@@ -1,4 +1,4 @@
-package com.rocbillow.base.base
+package com.rocbillow.base.generic
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +9,7 @@ import com.gyf.immersionbar.ktx.immersionBar
  * @date 2020-09-04
  */
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class GenericActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
