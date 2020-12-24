@@ -40,7 +40,9 @@ dependencies {
     api "androidx.lifecycle:lifecycle-viewmodel-savedstate:$deps.lifecycle"
     api "androidx.lifecycle:lifecycle-livedata-ktx:$deps.lifecycle"
     api "androidx.lifecycle:lifecycle-common-java8:$deps.lifecycle"
-    implementation "androidx.startup:startup-runtime:1.0.0"
+    api "androidx.lifecycle:lifecycle-process:$deps.lifecycle"
+
+    api "androidx.startup:startup-runtime:1.0.0"
 
     api "androidx.navigation:navigation-fragment-ktx:$deps.navigation"
     api "androidx.navigation:navigation-ui-ktx:$deps.navigation"

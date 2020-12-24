@@ -11,8 +11,8 @@ import com.drakeet.multitype.MultiTypeAdapter
 import com.rocbillow.base.ext.autoCleared
 import com.rocbillow.base.ext.binding
 import com.rocbillow.base.ext.start
-import com.rocbillow.doraemon.R
 import com.rocbillow.common.base.BaseFragment
+import com.rocbillow.doraemon.R
 import com.rocbillow.doraemon.databinding.FragmentMainBinding
 import com.rocbillow.uikit.recyclerview.GridDividerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,7 +28,7 @@ class MainFragment : BaseFragment() {
     private const val SPAN_COUNT = 3
   }
 
-  private val mainViewModel: MainViewModel by viewModels(this@MainFragment::requireActivity)
+  private val mainViewModel: MainViewModel by viewModels(this::requireActivity)
   private var binding by autoCleared<FragmentMainBinding>()
   private lateinit var multiTypeAdapter: MultiTypeAdapter
 

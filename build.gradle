@@ -32,6 +32,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        // for Timber snapshots
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
     }
     task javadoc(type: Javadoc) {
