@@ -1,32 +1,34 @@
-ext.buildConfig = [
-        'versionName': "0.0.1",
-        'versionCode': 1,
-        'jvm'        : JavaVersion.VERSION_1_8,
-        'minSdk'     : 23,
-        'targetSdk'  : 29,
-        'compileSdk' : 29,
-        'dataBinding': true,
-]
+ext {
+    buildConfig = [
+            'versionName': "0.0.1",
+            'versionCode': 1,
+            'jvm'        : JavaVersion.VERSION_1_8,
+            'minSdk'     : 23,
+            'targetSdk'  : 30,
+            'compileSdk' : 30,
+            'dataBinding': true,
+    ]
 
-ext.pluginConfig = [
-        'kotlin': "1.4.21",
-        'ktlint': "0.40.0",
-]
+    pluginConfig = [
+            'kotlin': "1.4.30-M1",
+            'ktlint': "0.40.0",
+    ]
 
-ext.deps = [
-        'ktxCore'         : "1.3.2",
-        'appcompat'       : "1.2.0",
-        'material'        : "1.2.1",
-        'constraintLayout': "2.0.4",
-        'lifecycle'       : "2.2.0",
-        'navigation'      : "2.3.2",
-        'hilt'            : "2.30.1-alpha",
-        'hiltViewModel'   : "1.0.0-alpha02",
-        'immersionbar'    : "3.0.0",
-]
+    deps = [
+            'ktxCore'         : "1.3.2",
+            'appcompat'       : "1.2.0",
+            'material'        : "1.2.1",
+            'constraintLayout': "2.0.4",
+            'lifecycle'       : "2.2.0",
+            'navigation'      : "2.3.2",
+            'hilt'            : "2.30.1-alpha",
+            'hiltViewModel'   : "1.0.0-alpha02",
+            'immersionbar'    : "3.0.0",
+    ]
 
-ext.testConfig = [
-        'junit'       : "4.13.1",
-        'androidJunit': "1.1.2",
-        'espresso'    : "3.3.0",
-]
+    testConfig = [
+            'junit'       : "4.13.1",
+            'androidJunit': "1.1.2",
+            'espresso'    : "3.3.0",
+    ]
+}
