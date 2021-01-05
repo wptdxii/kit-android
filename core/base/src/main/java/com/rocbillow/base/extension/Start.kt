@@ -1,4 +1,4 @@
-package com.rocbillow.base.ext
+package com.rocbillow.base.extension
 
 import android.content.Context
 import android.content.Intent

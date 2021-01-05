@@ -8,9 +8,9 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.drakeet.multitype.MultiTypeAdapter
-import com.rocbillow.base.ext.autoCleared
-import com.rocbillow.base.ext.binding
-import com.rocbillow.base.ext.start
+import com.rocbillow.base.extension.autoCleared
+import com.rocbillow.base.extension.dataBinding
+import com.rocbillow.base.extension.start
 import com.rocbillow.common.base.BaseFragment
 import com.rocbillow.doraemon.R
 import com.rocbillow.doraemon.databinding.FragmentMainBinding
@@ -35,9 +35,9 @@ class MainFragment : BaseFragment() {
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup?,
-    savedInstanceState: Bundle?
+    savedInstanceState: Bundle?,
   ): View {
-    binding = binding(inflater, R.layout.fragment_main, container)
+    binding = dataBinding(inflater, R.layout.fragment_main, container)
     return binding.root
   }
 

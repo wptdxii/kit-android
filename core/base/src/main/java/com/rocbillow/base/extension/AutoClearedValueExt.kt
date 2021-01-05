@@ -1,4 +1,4 @@
-package com.rocbillow.base.ext
+package com.rocbillow.base.extension
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver

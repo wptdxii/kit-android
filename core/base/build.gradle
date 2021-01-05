@@ -47,10 +47,12 @@ dependencies {
     api "androidx.navigation:navigation-fragment-ktx:$deps.navigation"
     api "androidx.navigation:navigation-ui-ktx:$deps.navigation"
 
-    api 'com.drakeet.multitype:multitype:4.2.0'
+    implementation 'me.drakeet.support:toastcompat:1.1.0'
     implementation 'com.orhanobut:logger:2.2.0'
-    api 'com.jakewharton.timber:timber:4.8.0-SNAPSHOT'
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.5'
+
+    api 'com.jakewharton.timber:timber:4.8.0-SNAPSHOT'
+    api 'com.drakeet.multitype:multitype:4.2.0'
     api "com.gyf.immersionbar:immersionbar:${deps.immersionbar}"
     api "com.gyf.immersionbar:immersionbar-ktx:${deps.immersionbar}"
 

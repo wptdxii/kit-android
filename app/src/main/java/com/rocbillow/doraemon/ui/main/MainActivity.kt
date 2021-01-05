@@ -5,10 +5,11 @@ import android.os.Bundle
 import androidx.annotation.NonNull
 import androidx.fragment.app.commitNow
 import androidx.navigation.fragment.NavHostFragment
-import com.rocbillow.base.ext.binding
-import com.rocbillow.base.ext.start
-import com.rocbillow.doraemon.R
+import com.rocbillow.base.extension.dataBinding
+import com.rocbillow.base.extension.start
+import com.rocbillow.base.utils.toast
 import com.rocbillow.common.base.BaseActivity
+import com.rocbillow.doraemon.R
 import com.rocbillow.doraemon.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,7 +28,7 @@ class MainActivity : BaseActivity() {
     }
   }
 
-  private val binding: ActivityMainBinding by binding(R.layout.activity_main)
+  private val binding: ActivityMainBinding by dataBinding(R.layout.activity_main)
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
