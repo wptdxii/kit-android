@@ -1,10 +1,11 @@
-package com.rocbillow.base.utils
+package com.rocbillow.base.extension
 
 import android.os.Handler
 import android.os.Looper
 import android.view.Gravity
 import android.widget.Toast
 import androidx.annotation.StringRes
+import com.rocbillow.base.utils.ContextProvider
 import me.drakeet.support.toast.ToastCompat
 
 /**
@@ -16,11 +17,12 @@ val handler: Handler by lazy {
   Handler(Looper.getMainLooper())
 }
 
-lateinit var toast: Toast
+private var toast: Toast? = null
 
 /**
  * Show a standard toast with string text.
  */
+@JvmOverloads
 fun CharSequence?.toast(
   duration: Int = Toast.LENGTH_SHORT,
   centerShow: Boolean = false,
@@ -38,6 +40,8 @@ fun CharSequence?.toast(
  * @see <a href="https://stackoverflow.com/questions/51156576/kotlin-annotate-receiver-of-extension-function">Kotlin annotate receiver of extension function</a>
  *
  */
+
+@JvmOverloads
 fun @receiver:StringRes Int.toast(
   duration: Int = Toast.LENGTH_SHORT,
   centerShow: Boolean = false,
@@ -54,10 +58,13 @@ private fun show(
 ) {
   if (charSequence.isNullOrEmpty() || charSequence.isNullOrBlank()) return
   handler.post {
-    if (::toast.isInitialized) toast.cancel()
+    toast?.cancel()
     toast = ToastCompat.makeText(ContextProvider.context, charSequence, duration)
-    if (hideAppName) toast.setText(charSequence)
-    toast.setGravity(if (centerShow) Gravity.CENTER else Gravity.BOTTOM, 0, 0)
-    toast.show()
+    toast?.let {
+      if (hideAppName) it.setText(charSequence)
+      val gravity = if (centerShow) Gravity.CENTER else Gravity.BOTTOM
+      it.setGravity(gravity, 0, 0)
+      it.show()
+    }
   }
 }

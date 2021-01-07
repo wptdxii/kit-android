@@ -47,14 +47,22 @@ dependencies {
     api "androidx.navigation:navigation-fragment-ktx:$deps.navigation"
     api "androidx.navigation:navigation-ui-ktx:$deps.navigation"
 
-    implementation 'me.drakeet.support:toastcompat:1.1.0'
-    implementation 'com.orhanobut:logger:2.2.0'
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.5'
+    api 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
+    api "io.github.reactivecircus.flowbinding:flowbinding-android:1.0.0"
+
+    api "io.reactivex.rxjava3:rxjava:3.0.9"
+    api 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    api 'com.jakewharton.rxbinding4:rxbinding:4.0.0'
+    api 'com.jakewharton.rxbinding4:rxbinding-appcompat:4.0.0'
 
     api 'com.jakewharton.timber:timber:4.8.0-SNAPSHOT'
     api 'com.drakeet.multitype:multitype:4.2.0'
     api "com.gyf.immersionbar:immersionbar:${deps.immersionbar}"
     api "com.gyf.immersionbar:immersionbar-ktx:${deps.immersionbar}"
+
+    implementation 'me.drakeet.support:toastcompat:1.1.0'
+    implementation 'com.orhanobut:logger:2.2.0'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.5'
 
     testImplementation "junit:junit:$testConfig.junit"
     androidTestImplementation "androidx.test.ext:junit:$testConfig.androidJunit"

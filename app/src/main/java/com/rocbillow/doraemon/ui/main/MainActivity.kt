@@ -2,12 +2,10 @@ package com.rocbillow.doraemon.ui.main
 
 import android.content.Context
 import android.os.Bundle
-import androidx.annotation.NonNull
 import androidx.fragment.app.commitNow
 import androidx.navigation.fragment.NavHostFragment
 import com.rocbillow.base.extension.dataBinding
 import com.rocbillow.base.extension.start
-import com.rocbillow.base.utils.toast
 import com.rocbillow.common.base.BaseActivity
 import com.rocbillow.doraemon.R
 import com.rocbillow.doraemon.databinding.ActivityMainBinding
@@ -23,7 +21,8 @@ class MainActivity : BaseActivity() {
   companion object {
     private const val TAG = "com.rocbillow.doraemon.ui.main.MainActivity"
 
-    fun start(@NonNull context: Context) {
+    @JvmStatic
+    fun start(context: Context) {
       context.start(MainActivity::class.java)
     }
   }

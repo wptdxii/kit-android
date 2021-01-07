@@ -4,7 +4,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.rocbillow.common.base.BaseViewModel
-import com.rocbillow.doraemon.ui.sunflower.GardenActivity
+import com.rocbillow.doraemon.ui.playground.sunflower.GardenActivity
 
 /**
  * @author rocbillow
@@ -13,12 +13,11 @@ import com.rocbillow.doraemon.ui.sunflower.GardenActivity
 
 class MainViewModel @ViewModelInject constructor() : BaseViewModel() {
 
+  val module: LiveData<List<Module>> by ::_module
+
   private val _module = MutableLiveData<List<Module>>().apply {
     value = arrayListOf(
       Module(GardenActivity.TAG, GardenActivity::class.java)
     )
   }
-
-  val module: LiveData<List<Module>>
-    get() = _module
 }
