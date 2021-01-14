@@ -1,0 +1,13 @@
+def isNonStable = { version ->
+    boolean rejected = ['release', 'final', 'alpha', 'beta', 'rc', 'ga'].any { qualifier ->
+        version ==~ /(?i).*[.-]${qualifier}[.\d-]*/
+    }
+    return rejected
+}
+
+tasks.named("dependencyUpdates").configure {
+//    checkForGradleUpdate = true
+//    rejectVersionIf {
+//        isNonStable(it.candidate.version) && !isNonStable(it.currentVersion)
+//    }
+}
