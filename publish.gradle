@@ -1,15 +1,15 @@
-dokka {
-    outputFormat = 'html'
-    outputDirectory = "$buildDir/dokka"
-
-    configuration {
-        includes = ['README.md']
+dokkaHtml.configure {
+    dokkaSourceSets {
+        named("main") {
+            outputDirectory.set(buildDir.resolve("dokka"))
+            includes.from(files("README.md"))
+        }
     }
 }
 
-task docJar(type: Jar, dependsOn: dokka) {
+task docJar(type: Jar, dependsOn: dokkaHtml) {
     archiveClassifier.set("javadoc")
-    from dokka.outputDirectory
+    from dokkaHtml.outputDirectory
 }
 
 task sourceJar(type: Jar) {

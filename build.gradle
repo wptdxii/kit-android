@@ -8,13 +8,13 @@ buildscript {
         classpath 'com.android.tools.build:gradle:7.0.0-alpha04'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$pluginConfig.kotlin"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$deps.hilt"
-        classpath 'org.jetbrains.dokka:dokka-gradle-plugin:0.10.1'
     }
 }
 
 plugins {
     id 'com.diffplug.spotless'
     id 'com.github.ben-manes.versions'
+    id 'org.jetbrains.dokka'
 }
 apply from: './dependencyUpdates.gradle'
 
