@@ -1,23 +1,25 @@
 package com.rocbillow.doraemon.ui.main
 
+import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import com.rocbillow.common.base.BaseViewModel
-import com.rocbillow.doraemon.ui.playground.sunflower.GardenActivity
 
 /**
  * @author rocbillow
  * @date 2020-09-30
  */
 
-class MainViewModel @ViewModelInject constructor() : BaseViewModel() {
+private const val KEY_INDEX = "active_fragment"
 
-  val module: LiveData<List<Module>> by ::_module
+class MainViewModel @ViewModelInject constructor(
+  @Assisted private val savedStateHandle: SavedStateHandle,
+) : BaseViewModel() {
 
-  private val _module = MutableLiveData<List<Module>>().apply {
-    value = arrayListOf(
-      Module(GardenActivity.TAG, GardenActivity::class.java)
-    )
-  }
+  @FragmentTag
+  var activeFragment
+    get() = savedStateHandle[KEY_INDEX] ?: ArchFragment.TAG
+    set(value) {
+      savedStateHandle[KEY_INDEX] = value
+    }
 }

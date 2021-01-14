@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/archFragment"
+        tools:checked="true"
+        android:icon="@drawable/vector_ic_bottom_nav_main_arch"
+        android:title="@string/tab_text_main_arch" />
+    <item
+        android:id="@+id/componentFragment"
+        android:icon="@drawable/vector_ic_bottom_nav_main_component"
+        android:title="@string/tab_text_main_component" />
+    <item
+        android:id="@+id/dashboardFragment"
+        android:icon="@drawable/vector_ic_bottom_nav_main_dashboard"
+        android:title="@string/tab_text_main_dashboard" />
+</menu>

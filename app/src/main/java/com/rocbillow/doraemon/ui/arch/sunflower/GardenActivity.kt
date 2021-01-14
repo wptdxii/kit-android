@@ -1,4 +1,4 @@
-package com.rocbillow.doraemon.ui.playground.sunflower
+package com.rocbillow.doraemon.ui.arch.sunflower
 
 import android.content.Context
 import android.os.Bundle

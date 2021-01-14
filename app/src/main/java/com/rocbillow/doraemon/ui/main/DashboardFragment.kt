@@ -11,23 +11,23 @@ import javax.inject.Inject
  * @date 2021-01-07
  */
 @AndroidEntryPoint
-class ComponentFragment @Inject constructor() : BaseMainFragment() {
+class DashboardFragment @Inject constructor() : BaseMainFragment() {
 
-  private val viewModel by activityViewModels<ComponentViewModel>()
+  private val viewModel by activityViewModels<DashboardViewModel>()
 
   companion object {
-    const val TAG = "com.rocbillow.doraemon.ui.main.component"
+    const val TAG = "com.rocbillow.doraemon.ui.main.dashboardFragment"
   }
 
   override fun bindUi() {
     super.bindUi()
-    binding.toolbar.setTitle(R.string.tab_text_main_component)
+    binding.toolbar.setTitle(R.string.tab_text_main_dashboard)
   }
 
-  override fun getMainViewModel(): BaseMainViewModel = viewModel
+  override fun getMainViewModel(): DashboardViewModel = viewModel
 }
 
-class ComponentViewModel @ViewModelInject constructor() : BaseMainViewModel() {
+class DashboardViewModel @ViewModelInject constructor() : BaseMainViewModel() {
 
   override fun createModules(): List<Module> = emptyList()
 }

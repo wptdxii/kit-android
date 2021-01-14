@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Doraemon</string>
     <string name="module_sunflower">Sunflower</string>
+
+    <string name="tab_text_main_arch">Arch</string>
+    <string name="tab_text_main_component">Component</string>
+    <string name="tab_text_main_dashboard">Dashboard</string>
 </resources>
