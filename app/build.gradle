@@ -42,13 +42,15 @@ dependencies {
     implementation project(':common')
     implementation project(":core:uikit")
 
-    testImplementation "junit:junit:$testConfig.junit"
-    androidTestImplementation "androidx.test.ext:junit:$testConfig.androidJunit"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$testConfig.espresso"
-
     // hilt
     implementation "com.google.dagger:hilt-android:$deps.hilt"
     kapt "com.google.dagger:hilt-android-compiler:$deps.hilt"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$deps.hiltViewModel"
     kapt "androidx.hilt:hilt-compiler:$deps.hiltViewModel"
+
+    implementation "androidx.lifecycle:lifecycle-process:$deps.lifecycle"
+
+    testImplementation "junit:junit:$testConfig.junit"
+    androidTestImplementation "androidx.test.ext:junit:$testConfig.androidJunit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$testConfig.espresso"
 }
