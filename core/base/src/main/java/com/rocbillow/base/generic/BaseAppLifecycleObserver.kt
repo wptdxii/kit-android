@@ -9,7 +9,7 @@ import androidx.lifecycle.LifecycleOwner
  * @author rocbillow
  * @date 2020-12-24
  */
-abstract class GenericAppLifecycleObserver : DefaultLifecycleObserver {
+abstract class BaseAppLifecycleObserver : DefaultLifecycleObserver {
 
   override fun onStart(owner: LifecycleOwner) {
     super.onStart(owner)

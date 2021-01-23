@@ -17,7 +17,7 @@ class ModuleItemViewBinder(private val block: (item: Module) -> Unit) :
 
   override fun onCreateViewHolder(
     inflater: LayoutInflater,
-    parent: ViewGroup
+    parent: ViewGroup,
   ): ViewHolder {
     val itemView = inflater.inflate(R.layout.item_module, parent, false)
     return ViewHolder(itemView)

@@ -1,5 +1,6 @@
 package com.rocbillow.kia
 
-fun process(value: Int, f: (Int) -> Int) {
-  println(f(value))
+inline fun <reified T> foo(noinline block: () -> Unit) {
+  // 会被内联
+  block()
 }

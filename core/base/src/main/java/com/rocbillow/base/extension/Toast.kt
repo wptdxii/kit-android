@@ -62,8 +62,9 @@ private fun show(
     toast = ToastCompat.makeText(ContextProvider.context, charSequence, duration)
     toast?.let {
       if (hideAppName) it.setText(charSequence)
-      val gravity = if (centerShow) Gravity.CENTER else Gravity.BOTTOM
-      it.setGravity(gravity, 0, 0)
+      if (centerShow) {
+        it.setGravity(Gravity.CENTER, 0, 0)
+      }
       it.show()
     }
   }

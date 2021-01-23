@@ -6,4 +6,4 @@ import androidx.fragment.app.DialogFragment
  * @author rocbillow
  * @date 2020-08-07
  */
-abstract class GenericDialogFragment : DialogFragment()
+abstract class BaseDialogFragment : DialogFragment()

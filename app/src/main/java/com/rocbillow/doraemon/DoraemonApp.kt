@@ -1,7 +1,7 @@
 package com.rocbillow.doraemon
 
 import androidx.lifecycle.ProcessLifecycleOwner
-import com.rocbillow.base.generic.GenericApplication
+import com.rocbillow.base.generic.BaseApplication
 import dagger.hilt.android.HiltAndroidApp
 
 /**
@@ -9,7 +9,7 @@ import dagger.hilt.android.HiltAndroidApp
  * @date 2020-09-04
  */
 @HiltAndroidApp
-class DoraemonApp : GenericApplication() {
+class DoraemonApp : BaseApplication() {
   override fun onCreate() {
     super.onCreate()
     registerActivityLifecycleCallbacks(ActivityLifecycleCallbacksImpl())

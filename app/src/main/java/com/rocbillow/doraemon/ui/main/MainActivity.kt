@@ -3,13 +3,17 @@ package com.rocbillow.doraemon.ui.main
 import android.content.Context
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.annotation.IdRes
 import androidx.annotation.StringDef
+import androidx.core.os.postDelayed
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commitNow
 import androidx.lifecycle.Lifecycle
 import com.rocbillow.base.extension.dataBinding
+import com.rocbillow.base.extension.handler
 import com.rocbillow.base.extension.start
-import com.rocbillow.common.base.BaseActivity
+import com.rocbillow.base.extension.toast
+import com.rocbillow.base.generic.BaseActivity
 import com.rocbillow.doraemon.R
 import com.rocbillow.doraemon.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,13 +31,6 @@ annotation class FragmentTag
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity() {
-
-  companion object {
-    @JvmStatic
-    fun start(context: Context) {
-      context.start(MainActivity::class.java)
-    }
-  }
 
   @Inject
   lateinit var archFragmentLazy: DaggerLazy<ArchFragment>
@@ -55,8 +52,7 @@ class MainActivity : BaseActivity() {
 
   private fun bindUi() {
     with(binding.bottomNav) {
-      selectedItemId = getItemIdByTag(viewModel.activeFragment)
-
+      selectedItemId = getItemId(viewModel.activeFragment)
       setOnNavigationItemSelectedListener { menuItem ->
         lateinit var tag: String
         when (menuItem.itemId) {
@@ -72,7 +68,8 @@ class MainActivity : BaseActivity() {
     selectFragment(viewModel.activeFragment)
   }
 
-  private fun getItemIdByTag(@FragmentTag tag: String): Int = when (tag) {
+  @IdRes
+  private fun getItemId(@FragmentTag tag: String): Int = when (tag) {
     ArchFragment.TAG -> R.id.archFragment
     ComponentFragment.TAG -> R.id.componentFragment
     DashboardFragment.TAG -> R.id.dashboardFragment
@@ -91,18 +88,18 @@ class MainActivity : BaseActivity() {
 
       var fragment: Fragment? = supportFragmentManager.findFragmentByTag(tag)
       if (fragment == null) {
-        fragment = getFragmentByTag(tag)
+        fragment = getFragment(tag)
         add(R.id.fragmentContainer, fragment, tag)
+        setReorderingAllowed(true)
       } else {
         show(fragment)
         setMaxLifecycle(fragment, Lifecycle.State.RESUMED)
       }
       setPrimaryNavigationFragment(fragment)
-      setReorderingAllowed(true)
     }
   }
 
-  private fun getFragmentByTag(@FragmentTag tag: String): Fragment = when (tag) {
+  private fun getFragment(@FragmentTag tag: String): Fragment = when (tag) {
     ArchFragment.TAG -> archFragmentLazy.get()
     ComponentFragment.TAG -> componentFragmentLazy.get()
     DashboardFragment.TAG -> dashboardFragmentLazy.get()
@@ -110,5 +107,25 @@ class MainActivity : BaseActivity() {
   }
 
   private fun checkTag(tag: String): Nothing =
-    throw IllegalArgumentException("Fragment with tag $tag not exists")
+    throw IllegalArgumentException("Fragment with tag $tag not exists.")
+
+  private var pressedOnce: Boolean = false
+
+  override fun onBackPressed() {
+    if (pressedOnce) {
+      super.onBackPressed()
+      return
+    }
+
+    pressedOnce = true
+    "Press back again to exit!".toast()
+    handler.postDelayed(2000) { pressedOnce = false }
+  }
+
+  companion object {
+    @JvmStatic
+    fun start(context: Context) {
+      context.start<MainActivity>()
+    }
+  }
 }

@@ -21,7 +21,7 @@ class ComponentFragment @Inject constructor() : BaseMainFragment() {
 
   override fun bindUi() {
     super.bindUi()
-    binding.toolbar.setTitle(R.string.tab_text_main_component)
+    viewBinding.toolbar.setTitle(R.string.tab_text_main_component)
   }
 
   override fun getMainViewModel(): BaseMainViewModel = viewModel

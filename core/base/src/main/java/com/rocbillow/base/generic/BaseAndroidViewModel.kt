@@ -8,5 +8,5 @@ import androidx.lifecycle.AndroidViewModel
  * @author rocbillow
  * @date 2020-08-07
  */
-abstract class GenericAndroidViewModel(@Nullable application: Application) :
+abstract class BaseAndroidViewModel(@Nullable application: Application) :
   AndroidViewModel(application)

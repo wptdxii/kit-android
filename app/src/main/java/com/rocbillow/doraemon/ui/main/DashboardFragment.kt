@@ -21,7 +21,7 @@ class DashboardFragment @Inject constructor() : BaseMainFragment() {
 
   override fun bindUi() {
     super.bindUi()
-    binding.toolbar.setTitle(R.string.tab_text_main_dashboard)
+    viewBinding.toolbar.setTitle(R.string.tab_text_main_dashboard)
   }
 
   override fun getMainViewModel(): DashboardViewModel = viewModel

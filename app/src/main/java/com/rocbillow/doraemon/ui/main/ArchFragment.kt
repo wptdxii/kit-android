@@ -22,7 +22,7 @@ class ArchFragment @Inject constructor() : BaseMainFragment() {
 
   override fun bindUi() {
     super.bindUi()
-    binding.toolbar.setTitle(R.string.tab_text_main_arch)
+    viewBinding.toolbar.setTitle(R.string.tab_text_main_arch)
   }
 
   override fun getMainViewModel(): ArchViewModel = viewModel

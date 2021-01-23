@@ -10,7 +10,8 @@ android {
     compileSdkVersion buildConfig.compileSdk
 
     buildFeatures {
-        dataBinding rootProject.ext.buildConfig.dataBinding
+        dataBinding true
+        viewBinding true
     }
 
     defaultConfig {

@@ -1,10 +1,10 @@
 package com.rocbillow.doraemon.ui.main
 
-import androidx.hilt.Assisted
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.SavedStateHandle
 import com.rocbillow.base.extension.SavedStateKeyValueDelegate
-import com.rocbillow.common.base.BaseViewModel
+import com.rocbillow.base.generic.BaseViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 /**
  * @author rocbillow
@@ -13,9 +13,8 @@ import com.rocbillow.common.base.BaseViewModel
 
 private const val ACTIVE_FRAGMENT = "active_fragment"
 
-class MainViewModel @ViewModelInject constructor(
-  @Assisted private val handle: SavedStateHandle,
-) : BaseViewModel() {
+@HiltViewModel
+class MainViewModel @Inject constructor(handle: SavedStateHandle) : BaseViewModel() {
 
   @FragmentTag
   var activeFragment by SavedStateKeyValueDelegate(handle, ACTIVE_FRAGMENT, ArchFragment.TAG)

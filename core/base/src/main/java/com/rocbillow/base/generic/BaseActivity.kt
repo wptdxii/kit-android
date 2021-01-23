@@ -9,7 +9,7 @@ import com.gyf.immersionbar.ktx.immersionBar
  * @date 2020-09-04
  */
 
-abstract class GenericActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
