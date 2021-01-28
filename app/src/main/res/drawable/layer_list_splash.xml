@@ -6,13 +6,6 @@
         android:drawable="@android:color/white"
         android:gravity="fill"
         tools:height="667dp" />
-
-    <item android:gravity="center">
-        <bitmap
-            android:gravity="center"
-            android:src="@drawable/ic_splash_logo" />
-    </item>
-
     <item
         android:bottom="15dp"
         android:gravity="bottom">

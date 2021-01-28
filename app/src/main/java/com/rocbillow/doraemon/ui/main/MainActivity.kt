@@ -9,10 +9,10 @@ import androidx.core.os.postDelayed
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commitNow
 import androidx.lifecycle.Lifecycle
-import com.rocbillow.base.extension.dataBinding
 import com.rocbillow.base.extension.handler
 import com.rocbillow.base.extension.start
 import com.rocbillow.base.extension.toast
+import com.rocbillow.base.extension.viewBinding
 import com.rocbillow.base.generic.BaseActivity
 import com.rocbillow.doraemon.R
 import com.rocbillow.doraemon.databinding.ActivityMainBinding
@@ -32,18 +32,14 @@ annotation class FragmentTag
 @AndroidEntryPoint
 class MainActivity : BaseActivity() {
 
-  @Inject
-  lateinit var archFragmentLazy: DaggerLazy<ArchFragment>
-
-  @Inject
-  lateinit var componentFragmentLazy: DaggerLazy<ComponentFragment>
-
-  @Inject
-  lateinit var dashboardFragmentLazy: DaggerLazy<DashboardFragment>
+  @Inject lateinit var archFragmentLazy: DaggerLazy<ArchFragment>
+  @Inject lateinit var componentFragmentLazy: DaggerLazy<ComponentFragment>
+  @Inject lateinit var dashboardFragmentLazy: DaggerLazy<DashboardFragment>
 
   private val viewModel: MainViewModel by viewModels()
-
-  private val binding: ActivityMainBinding by dataBinding(R.layout.activity_main)
+  private val viewBinding: ActivityMainBinding by viewBinding {
+    ActivityMainBinding.inflate(it)
+  }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -51,7 +47,26 @@ class MainActivity : BaseActivity() {
   }
 
   private fun bindUi() {
-    with(binding.bottomNav) {
+    bindBottomNav()
+    bindDrawer()
+    selectFragment(viewModel.activeFragment)
+  }
+
+  private fun bindDrawer() {
+    with(viewBinding.navView) {
+      setCheckedItem(getItemId(viewModel.activeFragment))
+      setNavigationItemSelectedListener {
+        viewBinding.drawerLayout.closeDrawers()
+        if (it.groupId == R.id.group_navigation) {
+          viewBinding.bottomNav.selectedItemId = it.itemId
+        }
+        true
+      }
+    }
+  }
+
+  private fun bindBottomNav() {
+    with(viewBinding.bottomNav) {
       selectedItemId = getItemId(viewModel.activeFragment)
       setOnNavigationItemSelectedListener { menuItem ->
         lateinit var tag: String
@@ -62,10 +77,10 @@ class MainActivity : BaseActivity() {
         }
         selectFragment(tag)
         viewModel.activeFragment = tag
+        viewBinding.navView.setCheckedItem(getItemId(tag))
         true
       }
     }
-    selectFragment(viewModel.activeFragment)
   }
 
   @IdRes

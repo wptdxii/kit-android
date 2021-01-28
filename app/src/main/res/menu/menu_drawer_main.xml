@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <group
+        android:id="@+id/group_navigation"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/archFragment"
+            android:icon="@drawable/vector_ic_bottom_nav_main_arch"
+            android:title="@string/tab_text_main_arch"
+            tools:checked="true" />
+        <item
+            android:id="@+id/componentFragment"
+            android:icon="@drawable/vector_ic_bottom_nav_main_component"
+            android:title="@string/tab_text_main_component" />
+        <item
+            android:id="@+id/dashboardFragment"
+            android:icon="@drawable/vector_ic_bottom_nav_main_dashboard"
+            android:title="@string/tab_text_main_dashboard" />
+
+    </group>
+
+    <group android:id="@+id/group_info">
+        <item
+            android:id="@+id/setting"
+            android:icon="@drawable/vector_ic_setting"
+            android:checked="true"
+            android:title="@string/nav_item_main_setting" />
+
+        <item
+            android:id="@+id/about"
+            android:checked="true"
+            android:icon="@drawable/vector_ic_about"
+            android:title="@string/nav_item_main_about" />
+    </group>
+</menu>
