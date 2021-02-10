@@ -1,10 +1,10 @@
 package com.rocbillow.doraemon.ui.main
 
 import androidx.fragment.app.activityViewModels
-import androidx.hilt.lifecycle.ViewModelInject
 import com.rocbillow.doraemon.R
 import com.rocbillow.doraemon.ui.arch.sunflower.GardenActivity
 import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 /**
@@ -28,7 +28,8 @@ class ArchFragment @Inject constructor() : BaseMainFragment() {
   override fun getMainViewModel(): ArchViewModel = viewModel
 }
 
-class ArchViewModel @ViewModelInject constructor() : BaseMainViewModel() {
+@HiltViewModel
+class ArchViewModel @Inject constructor() : BaseMainViewModel() {
 
   override fun createModules(): List<Module> = arrayListOf(
     Module("Sunflower", GardenActivity::class.java)

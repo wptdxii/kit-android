@@ -1,9 +1,9 @@
 package com.rocbillow.doraemon.ui.main
 
 import androidx.fragment.app.activityViewModels
-import androidx.hilt.lifecycle.ViewModelInject
 import com.rocbillow.doraemon.R
 import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 /**
@@ -27,7 +27,8 @@ class ComponentFragment @Inject constructor() : BaseMainFragment() {
   override fun getMainViewModel(): BaseMainViewModel = viewModel
 }
 
-class ComponentViewModel @ViewModelInject constructor() : BaseMainViewModel() {
+@HiltViewModel
+class ComponentViewModel @Inject constructor() : BaseMainViewModel() {
 
   override fun createModules(): List<Module> = emptyList()
 }

@@ -16,6 +16,6 @@ private const val ACTIVE_FRAGMENT = "active_fragment"
 @HiltViewModel
 class MainViewModel @Inject constructor(handle: SavedStateHandle) : BaseViewModel() {
 
-  @FragmentTag
+  @setparam:FragmentTag
   var activeFragment by SavedStateKeyValueDelegate(handle, ACTIVE_FRAGMENT, ArchFragment.TAG)
 }
