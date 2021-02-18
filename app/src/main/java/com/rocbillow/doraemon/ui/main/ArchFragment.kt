@@ -1,7 +1,6 @@
 package com.rocbillow.doraemon.ui.main
 
 import androidx.fragment.app.activityViewModels
-import com.rocbillow.doraemon.R
 import com.rocbillow.doraemon.ui.arch.sunflower.GardenActivity
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,15 +14,10 @@ import javax.inject.Inject
 class ArchFragment @Inject constructor() : BaseMainFragment() {
 
   companion object {
-    const val TAG = "com.rocbillow.doraemon.ui.main.archFragment"
+    const val TAG = "Arch"
   }
 
   private val viewModel by activityViewModels<ArchViewModel>()
-
-  override fun bindUi() {
-    super.bindUi()
-    viewBinding.toolbar.setTitle(R.string.tab_text_main_arch)
-  }
 
   override fun getMainViewModel(): ArchViewModel = viewModel
 }

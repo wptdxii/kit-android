@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.annotation.IdRes
 import androidx.annotation.StringDef
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.content.ContextCompat
 import androidx.core.os.postDelayed
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commitNow
@@ -37,9 +39,7 @@ class MainActivity : BaseActivity() {
   @Inject lateinit var dashboardFragmentLazy: DaggerLazy<DashboardFragment>
 
   private val viewModel: MainViewModel by viewModels()
-  private val viewBinding: ActivityMainBinding by viewBinding {
-    ActivityMainBinding.inflate(it)
-  }
+  private val viewBinding: ActivityMainBinding by viewBinding { ActivityMainBinding.inflate(it) }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -47,9 +47,24 @@ class MainActivity : BaseActivity() {
   }
 
   private fun bindUi() {
+    bindToolbar()
     bindBottomNav()
     bindDrawer()
     selectFragment(viewModel.activeFragment)
+  }
+
+  private fun bindToolbar() {
+    val drawerToggle = ActionBarDrawerToggle(this,
+      viewBinding.drawerLayout,
+      viewBinding.toolbar,
+      R.string.action_open_drawer,
+      R.string.action_close_drawer)
+
+    val arrowDrawable = drawerToggle.drawerArrowDrawable
+    arrowDrawable.color = ContextCompat.getColor(this, R.color.black)
+    viewBinding.toolbar.navigationIcon = arrowDrawable
+
+    viewBinding.drawerLayout.addDrawerListener(drawerToggle)
   }
 
   private fun bindDrawer() {
@@ -68,6 +83,7 @@ class MainActivity : BaseActivity() {
   private fun bindBottomNav() {
     with(viewBinding.bottomNav) {
       selectedItemId = getItemId(viewModel.activeFragment)
+      viewBinding.toolbar.title = viewModel.activeFragment
       setOnNavigationItemSelectedListener { menuItem ->
         lateinit var tag: String
         when (menuItem.itemId) {
@@ -77,6 +93,7 @@ class MainActivity : BaseActivity() {
         }
         selectFragment(tag)
         viewModel.activeFragment = tag
+        viewBinding.toolbar.title = tag
         viewBinding.navView.setCheckedItem(getItemId(tag))
         true
       }
@@ -88,7 +105,7 @@ class MainActivity : BaseActivity() {
     ArchFragment.TAG -> R.id.archFragment
     ComponentFragment.TAG -> R.id.componentFragment
     DashboardFragment.TAG -> R.id.dashboardFragment
-    else -> checkTag(tag)
+    else -> invalidateTag(tag)
   }
 
   private fun selectFragment(@FragmentTag tag: String) {
@@ -118,10 +135,10 @@ class MainActivity : BaseActivity() {
     ArchFragment.TAG -> archFragmentLazy.get()
     ComponentFragment.TAG -> componentFragmentLazy.get()
     DashboardFragment.TAG -> dashboardFragmentLazy.get()
-    else -> checkTag(tag)
+    else -> invalidateTag(tag)
   }
 
-  private fun checkTag(tag: String): Nothing =
+  private fun invalidateTag(tag: String): Nothing =
     throw IllegalArgumentException("Fragment with tag $tag not exists.")
 
   private var pressedOnce: Boolean = false
