@@ -15,11 +15,17 @@ fun <T : ViewBinding> Activity.viewBinding(block: (LayoutInflater) -> T) = lazy 
   block(layoutInflater).apply { setContentView(root) }
 }
 
-fun <T : ViewBinding> Fragment.viewBinding() = AutoClearedReadWriteDelete<T>()
-
-fun <T : ViewBinding> Fragment.viewBinding(block: (View) -> T) = AutoClearedReadOnlyDelegate(block)
-
-fun <T : ViewBinding> Dialog.viewBinding(block: (LayoutInflater) -> T) = lazy {
-  block(layoutInflater).apply { setContentView(root) }
+fun <T : ViewBinding> Dialog.viewBinding(bindingFactory: (LayoutInflater) -> T) = lazy {
+  bindingFactory(layoutInflater).apply { setContentView(root) }
 }
 
+/**
+ * ViewBinding delegate for Fragment constructed by empty constructor.
+ */
+fun <T : ViewBinding> Fragment.viewBinding() = AutoClearedReadWriteDelete<T>(this)
+
+/**
+ * ViewBinding delegate for Fragment constructed by constructor with layout id.
+ */
+fun <T : ViewBinding> Fragment.viewBinding(bindingFactory: (View) -> T) =
+  AutoClearedReadOnlyDelegate(this, bindingFactory)

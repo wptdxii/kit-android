@@ -16,6 +16,7 @@ fun <T : ViewDataBinding> AppCompatActivity.dataBinding(@LayoutRes resId: Int): 
   DataBindingUtil.setContentView(this, resId)
 }
 
-fun <T : ViewDataBinding> Fragment.dataBinding() = AutoClearedReadWriteDelete<T>()
+fun <T : ViewDataBinding> Fragment.dataBinding() = AutoClearedReadWriteDelete<T>(this)
 
-fun <T : ViewDataBinding> Fragment.dataBinding(block: (View) -> T) = AutoClearedReadOnlyDelegate(block)
+fun <T : ViewDataBinding> Fragment.dataBinding(bindingFactory: (View) -> T) =
+  AutoClearedReadOnlyDelegate(this, bindingFactory)

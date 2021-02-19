@@ -25,7 +25,7 @@ abstract class BaseMainFragment : BaseFragment() {
     private const val SPAN_COUNT = 3
   }
 
-  protected var viewBinding by viewBinding<FragmentBaseMainBinding>()
+  protected open var viewBinding by viewBinding<FragmentBaseMainBinding>()
 
   private lateinit var multiTypeAdapter: MultiTypeAdapter
   private lateinit var baseMainViewModel: BaseMainViewModel

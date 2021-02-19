@@ -25,10 +25,10 @@ private var toast: Toast? = null
 @JvmOverloads
 fun CharSequence?.toast(
   duration: Int = Toast.LENGTH_SHORT,
-  centerShow: Boolean = false,
+  showInCenter: Boolean = false,
   hideAppName: Boolean = true,
 ) {
-  show(this, duration, centerShow, hideAppName)
+  show(this, duration, showInCenter, hideAppName)
 }
 
 /**
@@ -44,16 +44,16 @@ fun CharSequence?.toast(
 @JvmOverloads
 fun @receiver:StringRes Int.toast(
   duration: Int = Toast.LENGTH_SHORT,
-  centerShow: Boolean = false,
+  showInCenter: Boolean = false,
   hideAppName: Boolean = true,
 ) {
-  show(ContextProvider.context.getString(this), duration, centerShow, hideAppName)
+  show(ContextProvider.context.getString(this), duration, showInCenter, hideAppName)
 }
 
 private fun show(
   charSequence: CharSequence?,
   duration: Int,
-  centerShow: Boolean = false,
+  showInCenter: Boolean = false,
   hideAppName: Boolean = true,
 ) {
   if (charSequence.isNullOrEmpty() || charSequence.isNullOrBlank()) return
@@ -61,8 +61,11 @@ private fun show(
     toast?.cancel()
     toast = ToastCompat.makeText(ContextProvider.context, charSequence, duration)
     toast?.let {
-      if (hideAppName) it.setText(charSequence)
-      if (centerShow) {
+      if (hideAppName) {
+        it.setText(charSequence)
+      }
+
+      if (showInCenter) {
         it.setGravity(Gravity.CENTER, 0, 0)
       }
       it.show()
