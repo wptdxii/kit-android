@@ -1,7 +1,7 @@
 package com.rocbillow.doraemon
 
 import androidx.lifecycle.ProcessLifecycleOwner
-import com.rocbillow.base.generic.BaseApplication
+import com.rocbillow.core.base.BaseApplication
 import dagger.hilt.android.HiltAndroidApp
 
 /**
@@ -16,3 +16,4 @@ class DoraemonApp : BaseApplication() {
     ProcessLifecycleOwner.get().lifecycle.addObserver(AppLifecycleObserver())
   }
 }
+

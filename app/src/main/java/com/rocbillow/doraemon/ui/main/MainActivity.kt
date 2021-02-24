@@ -11,11 +11,11 @@ import androidx.core.os.postDelayed
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commitNow
 import androidx.lifecycle.Lifecycle
-import com.rocbillow.base.extension.handler
-import com.rocbillow.base.extension.start
-import com.rocbillow.base.extension.toast
-import com.rocbillow.base.extension.viewBinding
-import com.rocbillow.base.generic.BaseActivity
+import com.rocbillow.core.extension.handler
+import com.rocbillow.core.extension.start
+import com.rocbillow.core.extension.toast
+import com.rocbillow.core.extension.viewBinding
+import com.rocbillow.core.base.BaseActivity
 import com.rocbillow.doraemon.R
 import com.rocbillow.doraemon.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint

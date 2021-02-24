@@ -41,7 +41,7 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(':common')
-    implementation project(":core:uikit")
+    implementation project(":sdk:uikit")
 
     // hilt
     implementation "com.google.dagger:hilt-android:$deps.hilt"

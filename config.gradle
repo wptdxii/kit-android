@@ -26,7 +26,7 @@ ext {
     ]
 
     testConfig = [
-            'junit'       : "4.13.1",
+            'junit'       : "4.13.2",
             'androidJunit': "1.1.2",
             'espresso'    : "3.3.0",
     ]

@@ -1,8 +1,8 @@
 package com.rocbillow.doraemon.ui.main
 
 import androidx.lifecycle.SavedStateHandle
-import com.rocbillow.base.extension.SavedStateKeyValueDelegate
-import com.rocbillow.base.generic.BaseViewModel
+import com.rocbillow.core.extension.SavedStateKeyValueDelegate
+import com.rocbillow.core.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

@@ -8,10 +8,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.GridLayoutManager
 import com.drakeet.multitype.MultiTypeAdapter
-import com.rocbillow.base.extension.start
-import com.rocbillow.base.extension.viewBinding
-import com.rocbillow.base.generic.BaseFragment
-import com.rocbillow.base.generic.BaseViewModel
+import com.rocbillow.core.extension.start
+import com.rocbillow.core.extension.viewBinding
+import com.rocbillow.core.base.BaseFragment
+import com.rocbillow.core.base.BaseViewModel
 import com.rocbillow.doraemon.databinding.FragmentBaseMainBinding
 import com.rocbillow.uikit.recyclerview.GridDividerItemDecoration
 

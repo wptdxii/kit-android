@@ -9,9 +9,9 @@ pluginManagement {
     }
 }
 
-include ':core:base'
-include ':core:uikit'
-include ':core:network'
+include ':sdk:core'
+include ':sdk:uikit'
+include ':sdk:network'
 include ':common'
 include ':kia'
 include ':app'

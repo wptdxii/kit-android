@@ -2,8 +2,8 @@ package com.rocbillow.doraemon.ui.arch.sunflower
 
 import android.content.Context
 import android.os.Bundle
-import com.rocbillow.base.extension.start
-import com.rocbillow.base.generic.BaseActivity
+import com.rocbillow.core.extension.start
+import com.rocbillow.core.base.BaseActivity
 
 /**
  * @author rocbillow

@@ -1,6 +1,6 @@
 package com.rocbillow.doraemon
 
-import com.rocbillow.base.generic.BaseAppLifecycleObserver
+import com.rocbillow.core.base.BaseAppLifecycleObserver
 import timber.log.Timber
 
 /**

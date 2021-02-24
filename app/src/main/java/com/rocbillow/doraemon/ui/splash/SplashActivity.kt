@@ -1,7 +1,7 @@
 package com.rocbillow.doraemon.ui.splash
 
 import android.os.Bundle
-import com.rocbillow.base.generic.BaseActivity
+import com.rocbillow.core.base.BaseActivity
 import com.rocbillow.doraemon.ui.main.MainActivity
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
