@@ -10,19 +10,19 @@ import javax.inject.Inject
  * @date 2021-01-07
  */
 @AndroidEntryPoint
-class DashboardFragment @Inject constructor() : BaseMainFragment() {
+class ComposeFragment @Inject constructor() : BaseMainFragment() {
 
-  private val viewModel by activityViewModels<DashboardViewModel>()
+  private val viewModel by activityViewModels<ComposeViewModel>()
 
   companion object {
-    const val TAG = "Dashboard"
+    const val TAG = "Compose"
   }
 
-  override fun getMainViewModel(): DashboardViewModel = viewModel
+  override fun getMainViewModel(): ComposeViewModel = viewModel
 }
 
 @HiltViewModel
-class DashboardViewModel @Inject constructor() : BaseMainViewModel() {
+class ComposeViewModel @Inject constructor() : BaseMainViewModel() {
 
   override fun createModules(): List<Module> = emptyList()
 }

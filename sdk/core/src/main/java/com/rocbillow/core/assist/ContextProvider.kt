@@ -1,4 +1,4 @@
-package com.rocbillow.core.utils
+package com.rocbillow.core.assist
 
 import android.annotation.SuppressLint
 import android.content.Context

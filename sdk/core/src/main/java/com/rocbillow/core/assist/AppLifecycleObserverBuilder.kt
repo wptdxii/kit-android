@@ -1,4 +1,4 @@
-package com.rocbillow.doraemon
+package com.rocbillow.core.assist
 
 import com.rocbillow.core.base.BaseAppLifecycleObserver
 

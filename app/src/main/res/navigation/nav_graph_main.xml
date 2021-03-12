@@ -16,6 +16,6 @@
 
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.rocbillow.doraemon.ui.main.DashboardFragment"
+        android:name="com.rocbillow.doraemon.ui.main.ComposeFragment"
         tools:layout="@layout/fragment_base_main" />
 </navigation>

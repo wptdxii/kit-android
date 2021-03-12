@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="toast_background_dark">#E6EEEEEE</color>
+    <color name="toast_text_dark">#BB000000</color>
+    <color name="toast_background_light">#BB000000</color>
+    <color name="toast_text_light">#E6EEEEEE</color>
+</resources>

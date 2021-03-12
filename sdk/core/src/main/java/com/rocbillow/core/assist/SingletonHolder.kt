@@ -1,4 +1,4 @@
-package com.rocbillow.core.utils
+package com.rocbillow.core.assist
 
 abstract class SingletonHolder<out T, in A>(private val creator: (A) -> T) {
 

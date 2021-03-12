@@ -1,7 +1,6 @@
-package com.rocbillow.doraemon
+package com.rocbillow.core.assist
 
 import com.rocbillow.core.base.BaseAppLifecycleObserver
-import timber.log.Timber
 
 /**
  * @author rocbillow
@@ -10,10 +9,10 @@ import timber.log.Timber
 class AppLifecycleObserver : BaseAppLifecycleObserver() {
 
   override fun onForeground() {
-    Timber.d("onForeground")
+    AppManager.isForeground = true
   }
 
   override fun onBackground() {
-    Timber.d("onBackground")
+    AppManager.isForeground = false
   }
 }

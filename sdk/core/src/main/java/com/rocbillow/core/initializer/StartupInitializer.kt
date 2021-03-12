@@ -3,7 +3,7 @@ package com.rocbillow.core.initializer
 import android.content.Context
 import androidx.startup.Initializer
 import com.rocbillow.core.BuildConfig
-import com.rocbillow.core.utils.ContextProvider
+import com.rocbillow.core.assist.ContextProvider
 import timber.log.Timber
 
 /**

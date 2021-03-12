@@ -1,4 +1,4 @@
-package com.rocbillow.doraemon
+package com.rocbillow.core.assist
 
 import android.app.Activity
 import android.app.Application
@@ -10,7 +10,9 @@ import android.os.Bundle
  */
 class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
 
-  override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) = Unit
+  override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+    ActivityManager.add(activity)
+  }
 
   override fun onActivityStarted(activity: Activity) = Unit
 
@@ -22,5 +24,7 @@ class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
 
   override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) = Unit
 
-  override fun onActivityDestroyed(activity: Activity) = Unit
+  override fun onActivityDestroyed(activity: Activity) {
+    ActivityManager.remove(activity)
+  }
 }

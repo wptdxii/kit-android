@@ -6,13 +6,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.drakeet.multitype.ItemViewBinder
+import com.rocbillow.core.extension.setOnThrottleClickListener
 import com.rocbillow.doraemon.R
 
 /**
  * @author rocbillow
  * @date 2020-09-03
  */
-class ModuleItemViewBinder(private val block: (item: Module) -> Unit) :
+class ModuleItemViewBinder(private val onClick: (item: Module) -> Unit) :
   ItemViewBinder<Module, ModuleItemViewBinder.ViewHolder>() {
 
   override fun onCreateViewHolder(
@@ -33,8 +34,8 @@ class ModuleItemViewBinder(private val block: (item: Module) -> Unit) :
     lateinit var item: Module
 
     init {
-      tvName.setOnClickListener {
-        block(item)
+      tvName.setOnThrottleClickListener {
+        onClick(item)
       }
     }
   }

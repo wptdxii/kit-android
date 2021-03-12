@@ -11,11 +11,11 @@ import androidx.core.os.postDelayed
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commitNow
 import androidx.lifecycle.Lifecycle
-import com.rocbillow.core.extension.handler
-import com.rocbillow.core.extension.start
-import com.rocbillow.core.extension.toast
-import com.rocbillow.core.extension.viewBinding
 import com.rocbillow.core.base.BaseActivity
+import com.rocbillow.core.extension.globalMainHandler
+import com.rocbillow.core.extension.start
+import com.rocbillow.core.extension.viewBinding
+import com.rocbillow.core.widget.toast.toast
 import com.rocbillow.doraemon.R
 import com.rocbillow.doraemon.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,7 +28,7 @@ import dagger.Lazy as DaggerLazy
  */
 
 @Retention(AnnotationRetention.SOURCE)
-@StringDef(ArchFragment.TAG, DashboardFragment.TAG, ComponentFragment.TAG)
+@StringDef(ArchFragment.TAG, ComposeFragment.TAG, ComponentFragment.TAG)
 annotation class FragmentTag
 
 @AndroidEntryPoint
@@ -36,7 +36,7 @@ class MainActivity : BaseActivity() {
 
   @Inject lateinit var archFragmentLazy: DaggerLazy<ArchFragment>
   @Inject lateinit var componentFragmentLazy: DaggerLazy<ComponentFragment>
-  @Inject lateinit var dashboardFragmentLazy: DaggerLazy<DashboardFragment>
+  @Inject lateinit var composeFragmentLazy: DaggerLazy<ComposeFragment>
 
   private val viewModel: MainViewModel by viewModels()
   private val viewBinding: ActivityMainBinding by viewBinding { ActivityMainBinding.inflate(it) }
@@ -54,16 +54,17 @@ class MainActivity : BaseActivity() {
   }
 
   private fun bindToolbar() {
-    val drawerToggle = ActionBarDrawerToggle(this,
+    val drawerToggle = ActionBarDrawerToggle(
+      this,
       viewBinding.drawerLayout,
       viewBinding.toolbar,
       R.string.action_open_drawer,
-      R.string.action_close_drawer)
+      R.string.action_close_drawer
+    )
 
     val arrowDrawable = drawerToggle.drawerArrowDrawable
     arrowDrawable.color = ContextCompat.getColor(this, R.color.black)
     viewBinding.toolbar.navigationIcon = arrowDrawable
-
     viewBinding.drawerLayout.addDrawerListener(drawerToggle)
   }
 
@@ -89,7 +90,7 @@ class MainActivity : BaseActivity() {
         when (menuItem.itemId) {
           R.id.archFragment -> tag = ArchFragment.TAG
           R.id.componentFragment -> tag = ComponentFragment.TAG
-          R.id.dashboardFragment -> tag = DashboardFragment.TAG
+          R.id.dashboardFragment -> tag = ComposeFragment.TAG
         }
         selectFragment(tag)
         viewModel.activeFragment = tag
@@ -104,7 +105,7 @@ class MainActivity : BaseActivity() {
   private fun getItemId(@FragmentTag tag: String): Int = when (tag) {
     ArchFragment.TAG -> R.id.archFragment
     ComponentFragment.TAG -> R.id.componentFragment
-    DashboardFragment.TAG -> R.id.dashboardFragment
+    ComposeFragment.TAG -> R.id.dashboardFragment
     else -> invalidateTag(tag)
   }
 
@@ -134,24 +135,26 @@ class MainActivity : BaseActivity() {
   private fun getFragment(@FragmentTag tag: String): Fragment = when (tag) {
     ArchFragment.TAG -> archFragmentLazy.get()
     ComponentFragment.TAG -> componentFragmentLazy.get()
-    DashboardFragment.TAG -> dashboardFragmentLazy.get()
+    ComposeFragment.TAG -> composeFragmentLazy.get()
     else -> invalidateTag(tag)
   }
 
   private fun invalidateTag(tag: String): Nothing =
     throw IllegalArgumentException("Fragment with tag $tag not exists.")
 
-  private var pressedOnce: Boolean = false
+  override fun onBackPressed() = pressAgainToExit()
 
-  override fun onBackPressed() {
-    if (pressedOnce) {
+  private var isClickedOnce: Boolean = false
+
+  private fun pressAgainToExit() {
+    if (isClickedOnce) {
       super.onBackPressed()
       return
     }
 
-    pressedOnce = true
-    "Press back again to exit!".toast()
-    handler.postDelayed(2000) { pressedOnce = false }
+    isClickedOnce = true
+    R.string.toast_msg_app_exit.toast()
+    globalMainHandler.postDelayed(2000) { isClickedOnce = false }
   }
 
   companion object {
