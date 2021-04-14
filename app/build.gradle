@@ -36,6 +36,11 @@ android {
     kotlinOptions {
         jvmTarget = buildConfig.jvm
     }
+
+    // for coroutines
+    packagingOptions {
+        exclude "DebugProbesKt.bin"
+    }
 }
 
 dependencies {

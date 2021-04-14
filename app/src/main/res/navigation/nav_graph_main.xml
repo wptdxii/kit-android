@@ -7,15 +7,15 @@
 
     <fragment
         android:id="@+id/archFragment"
-        android:name="com.rocbillow.doraemon.ui.main.ArchFragment"
+        android:name="com.rocbillow.doraemon.ui.com.rocbillow.kia.main.ArchFragment"
         tools:layout="@layout/fragment_base_main" />
     <fragment
         android:id="@+id/componentFragment"
-        android:name="com.rocbillow.doraemon.ui.main.ComponentFragment"
+        android:name="com.rocbillow.doraemon.ui.com.rocbillow.kia.main.ComponentFragment"
         tools:layout="@layout/fragment_base_main" />
 
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.rocbillow.doraemon.ui.main.ComposeFragment"
+        android:name="com.rocbillow.doraemon.ui.com.rocbillow.kia.main.ComposeFragment"
         tools:layout="@layout/fragment_base_main" />
 </navigation>

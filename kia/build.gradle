@@ -9,6 +9,8 @@ java {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:${pluginConfig.kotlin}"
-    implementation "org.jetbrains.kotlin:kotlin-reflect:${pluginConfig.kotlin}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$pluginConfig.kotlin"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$pluginConfig.kotlin"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$deps.coroutines"
 }

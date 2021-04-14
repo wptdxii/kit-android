@@ -33,14 +33,12 @@ internal class ToastCompat(context: Context, private val base: Toast) : Toast(co
 
     @JvmStatic
     private fun setContextCompat(view: View?, context: ToastContextWrapper) {
-      if (Build.VERSION.SDK_INT != Build.VERSION_CODES.N_MR1) return
-      view?.let {
-        try {
-          val field = View::class.java.getDeclaredField("mContext")
-          field.isAccessible = true
-          field[it] = context
-        } catch (ignored: Throwable) {
-        }
+      if (Build.VERSION.SDK_INT != Build.VERSION_CODES.N_MR1 || view == null) return
+      try {
+        val field = View::class.java.getDeclaredField("mContext")
+        field.isAccessible = true
+        field[view] = context
+      } catch (ignored: Throwable) {
       }
     }
   }

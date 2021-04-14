@@ -2,23 +2,24 @@ package com.rocbillow.doraemon.ui.main
 
 import android.content.Context
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.annotation.IdRes
 import androidx.annotation.StringDef
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.ContextCompat
-import androidx.core.os.postDelayed
+import androidx.core.view.postDelayed
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commitNow
 import androidx.lifecycle.Lifecycle
 import com.rocbillow.core.base.BaseActivity
-import com.rocbillow.core.extension.globalMainHandler
 import com.rocbillow.core.extension.start
 import com.rocbillow.core.extension.viewBinding
 import com.rocbillow.core.widget.toast.toast
 import com.rocbillow.doraemon.R
 import com.rocbillow.doraemon.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.prefs.Preferences
 import javax.inject.Inject
 import dagger.Lazy as DaggerLazy
 
@@ -34,6 +35,13 @@ annotation class FragmentTag
 @AndroidEntryPoint
 class MainActivity : BaseActivity() {
 
+  companion object {
+    @JvmStatic
+    fun start(context: Context) {
+      context.start<MainActivity>()
+    }
+  }
+
   @Inject lateinit var archFragmentLazy: DaggerLazy<ArchFragment>
   @Inject lateinit var componentFragmentLazy: DaggerLazy<ComponentFragment>
   @Inject lateinit var composeFragmentLazy: DaggerLazy<ComposeFragment>
@@ -44,61 +52,70 @@ class MainActivity : BaseActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     bindUi()
-  }
-
-  private fun bindUi() {
-    bindToolbar()
-    bindBottomNav()
-    bindDrawer()
     selectFragment(viewModel.activeFragment)
   }
 
-  private fun bindToolbar() {
+  private fun prefNode(): Preferences = Preferences.userRoot().node("")
+
+  private fun bindUi() {
+    bindToolbarAndDrawerLayout()
+    bindNavigationView()
+    bindBottomNavigationView()
+  }
+
+  private fun bindToolbarAndDrawerLayout() {
+    val toolbar = viewBinding.toolbar
+    val drawerLayout = viewBinding.drawerLayout
     val drawerToggle = ActionBarDrawerToggle(
-      this,
-      viewBinding.drawerLayout,
-      viewBinding.toolbar,
-      R.string.action_open_drawer,
-      R.string.action_close_drawer
+      this, drawerLayout, toolbar, R.string.action_open_drawer, R.string.action_close_drawer
     )
+    val arrowDrawable = drawerToggle.drawerArrowDrawable.apply {
+      color = ContextCompat.getColor(this@MainActivity, R.color.black)
+    }
 
-    val arrowDrawable = drawerToggle.drawerArrowDrawable
-    arrowDrawable.color = ContextCompat.getColor(this, R.color.black)
-    viewBinding.toolbar.navigationIcon = arrowDrawable
-    viewBinding.drawerLayout.addDrawerListener(drawerToggle)
+    toolbar.navigationIcon = arrowDrawable
+    drawerLayout.addDrawerListener(drawerToggle)
   }
 
-  private fun bindDrawer() {
-    with(viewBinding.navView) {
-      setCheckedItem(getItemId(viewModel.activeFragment))
-      setNavigationItemSelectedListener {
-        viewBinding.drawerLayout.closeDrawers()
-        if (it.groupId == R.id.group_navigation) {
-          viewBinding.bottomNav.selectedItemId = it.itemId
-        }
-        true
+  private fun bindNavigationView() {
+    with(viewBinding) {
+      navView.setCheckedItem(getItemId(viewModel.activeFragment))
+      navView.setNavigationItemSelectedListener { selectNavigationViewItem(it) }
+    }
+  }
+
+  private fun ActivityMainBinding.selectNavigationViewItem(it: MenuItem): Boolean {
+    drawerLayout.closeDrawers()
+    if (it.groupId == R.id.group_navigation) {
+      bottomNav.selectedItemId = it.itemId
+    }
+    return true
+  }
+
+  private fun bindBottomNavigationView() {
+    with(viewBinding) {
+      bottomNav.selectedItemId = getItemId(viewModel.activeFragment)
+      toolbar.title = viewModel.activeFragment
+      bottomNav.setOnNavigationItemSelectedListener { menuItem ->
+        selectBottomNavigationViewItem(menuItem)
       }
     }
   }
 
-  private fun bindBottomNav() {
-    with(viewBinding.bottomNav) {
-      selectedItemId = getItemId(viewModel.activeFragment)
-      viewBinding.toolbar.title = viewModel.activeFragment
-      setOnNavigationItemSelectedListener { menuItem ->
-        lateinit var tag: String
-        when (menuItem.itemId) {
-          R.id.archFragment -> tag = ArchFragment.TAG
-          R.id.componentFragment -> tag = ComponentFragment.TAG
-          R.id.dashboardFragment -> tag = ComposeFragment.TAG
-        }
-        selectFragment(tag)
-        viewModel.activeFragment = tag
-        viewBinding.toolbar.title = tag
-        viewBinding.navView.setCheckedItem(getItemId(tag))
-        true
-      }
-    }
+  private fun ActivityMainBinding.selectBottomNavigationViewItem(menuItem: MenuItem): Boolean {
+    val tag = getTagByMenuItem(menuItem)
+    selectFragment(tag)
+    viewModel.activeFragment = tag
+    toolbar.title = tag
+    navView.setCheckedItem(getItemId(tag))
+    return true
+  }
+
+  @FragmentTag
+  private fun getTagByMenuItem(menuItem: MenuItem) = when (menuItem.itemId) {
+    R.id.componentFragment -> ComponentFragment.TAG
+    R.id.dashboardFragment -> ComposeFragment.TAG
+    else -> ArchFragment.TAG
   }
 
   @IdRes
@@ -154,13 +171,6 @@ class MainActivity : BaseActivity() {
 
     isClickedOnce = true
     R.string.toast_msg_app_exit.toast()
-    globalMainHandler.postDelayed(2000) { isClickedOnce = false }
-  }
-
-  companion object {
-    @JvmStatic
-    fun start(context: Context) {
-      context.start<MainActivity>()
-    }
+    viewBinding.root.postDelayed(2000) { isClickedOnce = false }
   }
 }
