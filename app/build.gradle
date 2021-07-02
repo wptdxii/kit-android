@@ -16,8 +16,8 @@ android {
 
     defaultConfig {
         applicationId "com.rocbillow.doraemon"
-        minSdkVersion buildConfig.minSdk
-        targetSdkVersion buildConfig.targetSdk
+        minSdk buildConfig.minSdk
+        targetSdk buildConfig.targetSdk
         versionCode buildConfig.versionCode
         versionName buildConfig.versionName
 
@@ -30,8 +30,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = buildConfig.jvm
-        targetCompatibility = buildConfig.jvm
+        sourceCompatibility = buildConfig.javaVersion
+        targetCompatibility = buildConfig.javaVersion
     }
     kotlinOptions {
         jvmTarget = buildConfig.jvm
@@ -46,7 +46,8 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(':common')
-    implementation project(":sdk:uikit")
+    implementation project(':arch:sunflower')
+    implementation project(':component')
 
     implementation "com.google.dagger:hilt-android:$deps.hilt"
     kapt "com.google.dagger:hilt-android-compiler:$deps.hilt"
@@ -56,6 +57,4 @@ dependencies {
     testImplementation "junit:junit:$testConfig.junit"
     androidTestImplementation "androidx.test.ext:junit:$testConfig.androidJunit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$testConfig.espresso"
-
-    implementation 'com.blankj:utilcodex:1.30.6'
 }

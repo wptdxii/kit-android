@@ -1,6 +1,6 @@
 # Doraemon
 
-Doraemon is a gadget project which contains lots of useful codes, just like Doraemon's 4D Pocket.
+Doraemon is a gadget project which contains lots of useful codes, just like Doraemon's Pocket.
 
 ## Update dependencies
 

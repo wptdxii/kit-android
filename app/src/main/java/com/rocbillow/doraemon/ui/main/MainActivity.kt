@@ -8,18 +8,16 @@ import androidx.annotation.IdRes
 import androidx.annotation.StringDef
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.ContextCompat
-import androidx.core.view.postDelayed
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commitNow
 import androidx.lifecycle.Lifecycle
 import com.rocbillow.core.base.BaseActivity
 import com.rocbillow.core.extension.start
-import com.rocbillow.core.extension.viewBinding
-import com.rocbillow.core.widget.toast.toast
+import com.rocbillow.core.binding.viewBinding
+import com.rocbillow.core.uikit.toast.toast
 import com.rocbillow.doraemon.R
 import com.rocbillow.doraemon.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.prefs.Preferences
 import javax.inject.Inject
 import dagger.Lazy as DaggerLazy
 
@@ -54,8 +52,6 @@ class MainActivity : BaseActivity() {
     bindUi()
     selectFragment(viewModel.activeFragment)
   }
-
-  private fun prefNode(): Preferences = Preferences.userRoot().node("")
 
   private fun bindUi() {
     bindToolbarAndDrawerLayout()
@@ -171,6 +167,6 @@ class MainActivity : BaseActivity() {
 
     isClickedOnce = true
     R.string.toast_msg_app_exit.toast()
-    viewBinding.root.postDelayed(2000) { isClickedOnce = false }
+    viewBinding.root.postDelayed({ isClickedOnce = false }, 2000)
   }
 }

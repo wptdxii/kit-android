@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.rocbillow.component">
+
+    <application>
+        <activity
+            android:name="com.rocbillow.component.sample.SampleActivity"
+            android:exported="true" />
+    </application>
+
+</manifest>

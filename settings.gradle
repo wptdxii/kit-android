@@ -1,7 +1,7 @@
 pluginManagement {
     plugins {
         id 'com.jfrog.bintray' version "1.8.5"
-        id 'com.diffplug.spotless' version "5.12.4"
+        id 'com.diffplug.spotless' version "5.13.0"
         // https://github.com/ben-manes/gradle-versions-plugin
         id 'com.github.ben-manes.versions' version "0.38.0"
         // https://github.com/Kotlin/dokka
@@ -10,9 +10,10 @@ pluginManagement {
 }
 
 include ':sdk:core'
-include ':sdk:uikit'
 include ':sdk:network'
 include ':common'
 include ':kia'
 include ':app'
+include ':arch:sunflower'
+include ':component'
 rootProject.name = "Doraemon"

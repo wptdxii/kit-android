@@ -4,21 +4,19 @@ plugins {
 }
 
 android {
-    compileSdkVersion buildConfig.compileSdk
+    compileSdk buildConfig.compileSdk
 
     defaultConfig {
-        minSdkVersion buildConfig.minSdk
-        targetSdkVersion buildConfig.targetSdk
-        versionCode buildConfig.versionCode
-        versionName buildConfig.versionName
+        minSdk buildConfig.minSdk
+        targetSdk buildConfig.targetSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
 
     compileOptions {
-        sourceCompatibility = buildConfig.jvm
-        targetCompatibility = buildConfig.jvm
+        sourceCompatibility = buildConfig.javaVersion
+        targetCompatibility = buildConfig.javaVersion
     }
     kotlinOptions {
         jvmTarget = buildConfig.jvm
@@ -26,8 +24,8 @@ android {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:${pluginConfig.kotlin}"
-    implementation "androidx.core:core-ktx:$deps.ktxCore"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$pluginConfig.kotlin"
+    implementation "androidx.core:core-ktx:$deps.coreKtx"
 
     testImplementation "junit:junit:$testConfig.junit"
     androidTestImplementation "androidx.test.ext:junit:$testConfig.androidJunit"

@@ -4,13 +4,13 @@ plugins {
 }
 
 java {
-    sourceCompatibility = buildConfig.jvm
-    targetCompatibility = buildConfig.jvm
+    sourceCompatibility = buildConfig.javaVersion
+    targetCompatibility = buildConfig.javaVersion
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$pluginConfig.kotlin"
-    implementation "org.jetbrains.kotlin:kotlin-reflect:$pluginConfig.kotlin"
-
+    //noinspection DifferentStdlibGradleVersion
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$buildConfig.kotlin"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$buildConfig.kotlin"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$deps.coroutines"
 }

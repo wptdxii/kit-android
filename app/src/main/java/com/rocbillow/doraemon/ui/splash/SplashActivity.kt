@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import com.rocbillow.core.base.BaseActivity
 import com.rocbillow.doraemon.ui.main.MainActivity
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 
 /**
@@ -13,6 +14,7 @@ import kotlinx.coroutines.delay
 
 private const val PERSISTENT_PERIOD = 500L
 
+@AndroidEntryPoint
 class SplashActivity : BaseActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {

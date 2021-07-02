@@ -12,7 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App"
         tools:ignore="AllowBackup">
-        <activity android:name="com.rocbillow.doraemon.ui.arch.sunflower.GardenActivity" />
         <activity
             android:name="com.rocbillow.doraemon.ui.main.MainActivity"
             android:launchMode="singleTask" />

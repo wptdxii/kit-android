@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="blue_grey_50">#EEEEF0</color>
+    <color name="blue_grey_100">#DEE0E2</color>
+
     <color name="toast_background_dark">#E6EEEEEE</color>
     <color name="toast_text_dark">#BB000000</color>
     <color name="toast_background_light">#BB000000</color>

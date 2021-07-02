@@ -1,0 +1,53 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk buildConfig.compileSdk
+    buildFeatures {
+        dataBinding true
+    }
+
+    defaultConfig {
+        minSdk buildConfig.minSdk
+        targetSdk buildConfig.targetSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = buildConfig.javaVersion
+        targetCompatibility = buildConfig.javaVersion
+    }
+    kotlinOptions {
+        jvmTarget = buildConfig.jvm
+    }
+
+    hilt {
+        enableExperimentalClasspathAggregation = true
+    }
+}
+
+dependencies {
+    implementation project(':common')
+
+    implementation "com.google.dagger:hilt-android:$deps.hilt"
+    kapt "com.google.dagger:hilt-android-compiler:$deps.hilt"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$deps.hiltViewModel"
+    kapt "androidx.hilt:hilt-compiler:$deps.hiltCompiler"
+
+    testImplementation "junit:junit:$testConfig.junit"
+    androidTestImplementation "androidx.test.ext:junit:$testConfig.androidJunit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$testConfig.espresso"
+}

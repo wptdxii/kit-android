@@ -1,7 +1,7 @@
 package com.rocbillow.doraemon.ui.main
 
 import androidx.fragment.app.activityViewModels
-import com.rocbillow.doraemon.ui.arch.sunflower.GardenActivity
+import com.arch.sunflower.ui.GardenActivity
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

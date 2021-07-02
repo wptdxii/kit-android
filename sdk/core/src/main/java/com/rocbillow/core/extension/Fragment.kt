@@ -1,11 +1,13 @@
 package com.rocbillow.core.extension
 
+import android.annotation.SuppressLint
 import android.os.*
 import androidx.fragment.app.Fragment
 
 /**
  * @see android.os.MessageQueue.IdleHandler.queueIdle
  */
+@SuppressLint("ObsoleteSdkInt")
 @JvmOverloads
 fun Fragment.doOnMainThreadIdle(timeout: Long? = null,action: () -> Unit) {
   val handler = Handler(Looper.getMainLooper())

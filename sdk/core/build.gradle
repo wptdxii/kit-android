@@ -22,8 +22,8 @@ android {
         consumerProguardFiles "consumer-rules.pro"
     }
     compileOptions {
-        sourceCompatibility = buildConfig.jvm
-        targetCompatibility = buildConfig.jvm
+        sourceCompatibility = buildConfig.javaVersion
+        targetCompatibility = buildConfig.javaVersion
     }
     kotlinOptions {
         jvmTarget = buildConfig.jvm
@@ -32,17 +32,19 @@ android {
 
 dependencies {
     api fileTree(dir: "libs", include: ["*.jar"])
-    api "org.jetbrains.kotlin:kotlin-stdlib:$pluginConfig.kotlin"
-    api "androidx.core:core-ktx:$deps.ktxCore"
+    api "org.jetbrains.kotlin:kotlin-stdlib:$buildConfig.kotlin"
+    api "androidx.core:core-ktx:$deps.coreKtx"
     api "androidx.appcompat:appcompat:$deps.appcompat"
     api "com.google.android.material:material:$deps.material"
     api "androidx.constraintlayout:constraintlayout:$deps.constraintLayout"
 
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:$deps.lifecycle"
-    api "androidx.lifecycle:lifecycle-viewmodel-savedstate:$deps.lifecycle"
     api "androidx.lifecycle:lifecycle-livedata-ktx:$deps.lifecycle"
+    api "androidx.lifecycle:lifecycle-runtime-ktx:$deps.lifecycle"
     api "androidx.lifecycle:lifecycle-common-java8:$deps.lifecycle"
+
     api "androidx.lifecycle:lifecycle-process:$deps.lifecycle"
+    api "androidx.lifecycle:lifecycle-viewmodel-savedstate:$deps.lifecycle"
 
     api "androidx.startup:startup-runtime:1.0.0"
 
@@ -50,9 +52,9 @@ dependencies {
     api "androidx.navigation:navigation-ui-ktx:$deps.navigation"
 
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$deps.coroutines"
-    api "io.github.reactivecircus.flowbinding:flowbinding-android:1.0.0"
+    api "io.github.reactivecircus.flowbinding:flowbinding-android:1.1.0"
 
-    api "io.reactivex.rxjava3:rxjava:3.0.12"
+    api "io.reactivex.rxjava3:rxjava:3.0.13"
     api 'io.reactivex.rxjava3:rxandroid:3.0.0'
     api 'com.jakewharton.rxbinding4:rxbinding:4.0.0'
     api 'com.jakewharton.rxbinding4:rxbinding-appcompat:4.0.0'

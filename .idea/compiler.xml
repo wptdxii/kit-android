@@ -3,10 +3,14 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.8">
       <module name="Doraemon.app" target="11" />
+      <module name="Doraemon.arch.sunflower" target="11" />
       <module name="Doraemon.common" target="11" />
+      <module name="Doraemon.component" target="11" />
       <module name="Doraemon.sdk.core" target="11" />
       <module name="Doraemon.sdk.network" target="11" />
+      <module name="Doraemon.sdk.scan" target="11" />
       <module name="Doraemon.sdk.uikit" target="11" />
+      <module name="Doraemon.sunflower" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
