@@ -3,6 +3,7 @@ package com.rocbillow.component.sample
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavDirections
 import androidx.recyclerview.widget.DiffUtil
 import com.rocbillow.component.R
 import com.rocbillow.component.databinding.ItemSampleBinding
@@ -38,7 +39,7 @@ class SampleViewHolder(itemView: View, onClick: ((Sample) -> Unit)? = null) :
     }
 }
 
-data class Sample(val name: String) {
+data class Sample(val name: String, val direction: NavDirections) {
     companion object {
         val CALLBACK: DiffUtil.ItemCallback<Sample> = object : DiffUtil.ItemCallback<Sample>() {
 

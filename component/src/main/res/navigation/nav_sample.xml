@@ -8,5 +8,16 @@
     <fragment
         android:id="@+id/sampleFragment"
         android:name="com.rocbillow.component.sample.SampleFragment"
-        tools:layout="@layout/fragment_sample" />
+        android:label="Sample"
+        tools:layout="@layout/fragment_sample">
+        <action
+            android:id="@+id/action_to_basic_data_binding"
+            app:destination="@id/basicDataBinding" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/basicDataBinding"
+        android:label="Basic Data Binding"
+        android:name="com.rocbillow.component.sample.databinding.BasicDataBindingFragment"
+        tools:layout="@layout/fragment_basic_data_binding" />
 </navigation>

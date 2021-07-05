@@ -17,14 +17,14 @@ ext {
     deps = [
             'coreKtx'         : "1.6.0-rc01",
             'appcompat'       : "1.3.0",
-            'material'        : "1.3.0",
+            'material'        : "1.4.0-rc01",
             'coroutines'      : "1.5.0",
             'constraintLayout': "2.0.4",
             'lifecycle'       : "2.4.0-alpha02",
             'hilt'            : "2.37",
             'hiltViewModel'   : "1.0.0-alpha03",
             'hiltCompiler'    : "1.0.0",
-            'navigation'      : "2.3.5",
+            'navigation'      : "2.4.0-alpha04",
             'immersionbar'    : "3.0.0",
     ]
 
