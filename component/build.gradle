@@ -44,12 +44,11 @@ dependencies {
     implementation project(':common')
 
     implementation "com.google.dagger:hilt-android:$deps.hilt"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "com.google.dagger:hilt-android-compiler:$deps.hilt"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$deps.hiltViewModel"
     kapt "androidx.hilt:hilt-compiler:$deps.hiltCompiler"
 
-    testImplementation "junit:junit:$testConfig.junit"
-    androidTestImplementation "androidx.test.ext:junit:$testConfig.androidJunit"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$testConfig.espresso"
+    testImplementation "junit:junit:$deps.junit"
+    androidTestImplementation "androidx.test.ext:junit:$deps.androidJunit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$deps.espresso"
 }

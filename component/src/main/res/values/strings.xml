@@ -3,4 +3,13 @@
     <string name="last_name_label">Last name</string>
     <string name="likes">Likes</string>
     <string name="like">Like</string>
+    <string name="unlike">Unlike</string>
+    <string name="minus_sign">-</string>
+    <string name="plus_sign">+</string>
+    <string name="reset">Reset</string>
+    <string name="start">Start</string>
+    <string name="pause">Pause</string>
+    <string name="prefs_timePerWorkSet">SHARED_PREFS_TIME_PER_WORKSET</string>
+    <string name="prefs_timePerRestSet">SHARED_PREFS_TIME_PER_RESTSET</string>
+    <string name="prefs_numberOfSets">SHARED_PREFS_NUMBER_OF_SETS</string>
 </resources>

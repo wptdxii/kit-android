@@ -26,7 +26,15 @@ class BasicDataBindingViewModel @Inject constructor() : BaseViewModel() {
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), Popularity.NORMAL)
 
     fun onLike() {
-        _likes.value = _likes.value + 1
+        if (_likes.value < 10) {
+            _likes.value++
+        }
+    }
+
+    fun onUnlike() {
+        if (_likes.value > 0) {
+            _likes.value--
+        }
     }
 }
 

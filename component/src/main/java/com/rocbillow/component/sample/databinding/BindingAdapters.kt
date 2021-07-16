@@ -3,12 +3,18 @@ package com.rocbillow.component.sample.databinding
 import android.content.Context
 import android.content.res.ColorStateList
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.widget.ImageViewCompat
 import androidx.databinding.BindingAdapter
+import androidx.databinding.InverseBindingAdapter
+import androidx.databinding.InverseBindingListener
 import com.rocbillow.component.R
+import com.rocbillow.core.extension.hideSoftInput
 import com.rocbillow.core.uikit.extension.colorInt
 
 @BindingAdapter("app:popularityIcon")
@@ -53,3 +59,60 @@ fun getAssociatedColor(popularity: Popularity, context: Context) = when (popular
     Popularity.STAR -> R.color.star.colorInt
 }
 
+@BindingAdapter("numberOfSets")
+fun EditText.setNumberOfSets(value: String) {
+    val oldValue = text.toString()
+    if (value != oldValue) {
+        setText(value)
+    }
+}
+
+@InverseBindingAdapter(attribute = "numberOfSets")
+fun EditText.getNumberOfSets() = text.toString()
+
+@BindingAdapter("numberOfSetsAttrChanged")
+fun EditText.setFocusChangeListener(listener: InverseBindingListener?) {
+    onFocusChangeListener = View.OnFocusChangeListener { focusedView, hasFocus ->
+        val editText = focusedView as EditText
+        if (hasFocus) {
+            editText.setText("")
+        } else {
+            listener?.onChange()
+        }
+    }
+}
+
+@BindingAdapter("loseFocusWhen")
+fun EditText.loseFocusWhen(condition: Boolean) {
+    if (condition) clearFocus()
+}
+
+@BindingAdapter("hideKeyboardOnInputDone")
+fun EditText.hideKeyboardOnInputDone(enabled: Boolean) {
+    if (!enabled) return
+    val listener = TextView.OnEditorActionListener { _, actionId, _ ->
+        if (actionId == EditorInfo.IME_ACTION_DONE) {
+            clearFocus()
+            hideSoftInput()
+        }
+        false
+    }
+    setOnEditorActionListener(listener)
+}
+
+@BindingAdapter("clearOnFocusAndDispatch")
+fun EditText.clearOnFocusAndDispatch(listener: View.OnFocusChangeListener?) {
+    onFocusChangeListener = View.OnFocusChangeListener { focusView, hasFocus ->
+        val textView = focusView as TextView
+        if (hasFocus) {
+            textView.setTag(R.id.previous_value, textView.text)
+            textView.text = ""
+        } else {
+            if (textView.text.isEmpty()) {
+                val previousValue = textView.tag as CharSequence?
+                textView.text = previousValue ?: ""
+            }
+            listener?.onFocusChange(focusView, hasFocus)
+        }
+    }
+}

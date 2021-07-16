@@ -13,11 +13,19 @@
         <action
             android:id="@+id/action_to_basic_data_binding"
             app:destination="@id/basicDataBinding" />
+        <action
+            android:id="@+id/action_to_two_way_data_binding"
+            app:destination="@+id/twoWayDataBinding" />
     </fragment>
 
     <fragment
         android:id="@+id/basicDataBinding"
-        android:label="Basic Data Binding"
         android:name="com.rocbillow.component.sample.databinding.BasicDataBindingFragment"
+        android:label="Basic Data Binding"
         tools:layout="@layout/fragment_basic_data_binding" />
+    <fragment
+        android:id="@+id/twoWayDataBinding"
+        android:name="com.rocbillow.component.sample.databinding.TwoWayDataBindingFragment"
+        android:label="Two Way Data Binding"
+        tools:layout="@layout/fragment_two_way_data_binding" />
 </navigation>

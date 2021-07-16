@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.rocbillow.component.sample.databinding.Converters" />
+
+        <variable
+            name="viewModel"
+            type="com.rocbillow.component.sample.databinding.TwoWayDataBindingViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            style="@style/Style.Toolbar"
+            tools:ignore="MissingConstraints"
+            tools:title="Toolbar" />
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:constraint_referenced_ids="setsDecrease,numberOfSets,setsIncrease,reset,startPause"
+            app:flow_firstHorizontalStyle="spread_inside"
+            app:flow_horizontalGap="4dp"
+            app:flow_wrapMode="chain"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+        <Button
+            android:id="@+id/setsDecrease"
+            android:layout_width="42dp"
+            android:layout_height="48dp"
+            android:onClick="@{() -> viewModel.setsDecrease()}"
+            android:text="@string/minus_sign"
+            tools:layout_editor_absoluteY="69dp" />
+
+        <EditText
+            android:id="@+id/numberOfSets"
+            numberOfSets="@={Converters.numberOfSetsToString(viewModel.numberOfSetsWrapper,viewModel.numberOfSets)}"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:digits="0123456789"
+            android:ems="10"
+            android:gravity="center"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:textAlignment="center"
+            android:textSize="16dp"
+            tools:ignore="SpUsage"
+            tools:text="1/5" />
+
+        <Button
+            android:id="@+id/setsIncrease"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:onClick="@{() -> viewModel.setsIncrease()}"
+            android:text="@string/plus_sign"
+            tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
+
+        <Button
+            android:id="@+id/reset"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:onClick="@{()-> viewModel.reset()}"
+            android:text="@string/reset"
+            tools:layout_editor_absoluteX="231dp"
+            tools:layout_editor_absoluteY="69dp" />
+
+        <ToggleButton
+            android:id="@+id/startPause"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:checked="@={viewModel.timerRunning}"
+            android:focusable="true"
+            android:textOff="@string/start"
+            android:textOn="@string/pause"
+            tools:layout_editor_absoluteX="323dp"
+            tools:layout_editor_absoluteY="66dp" />
+
+        <ProgressBar
+            android:id="@+id/restBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:max="@{viewModel.timePerRestSet}"
+            android:progress="@{viewModel.restTimeLeft}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/workBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            animateVerticalBias="@{viewModel.timerRunning}"
+            animateVerticalBiasStage="@{viewModel.inWorkingStage}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:max="@{viewModel.timePerWorkSet}"
+            android:progress="@{viewModel.workTimeLeft}"
+            app:layout_constraintBottom_toTopOf="@+id/restBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/top" />
+
+        <Button
+            android:id="@+id/workMinus"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="8dp"
+            android:onClick="@{()->viewModel.workTimeDecrease()}"
+            android:text="@string/minus_sign"
+            app:layout_constraintBottom_toTopOf="@+id/workBar"
+            app:layout_constraintEnd_toStartOf="@+id/setWorkTime"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="@id/workBar" />
+
+        <EditText
+            android:id="@+id/setWorkTime"
+            clearOnFocusAndDispatch="@{() -> viewModel.timePerWorkSetChanged(setWorkTime.getText())}"
+            hideKeyboardOnInputDone="@{true}"
+            android:layout_width="64dp"
+            android:layout_height="wrap_content"
+            android:digits=",.:0123456789"
+            android:imeOptions="actionDone"
+            android:inputType="time"
+            android:maxLines="1"
+            android:minHeight="48dp"
+            android:text="@{Converters.fromTenthsToSeconds(viewModel.timePerWorkSet)}"
+            android:textAlignment="center"
+            app:layout_constraintBaseline_toBaselineOf="@+id/workMinus"
+            app:layout_constraintEnd_toStartOf="@+id/workPlus"
+            app:layout_constraintStart_toEndOf="@+id/workMinus"
+            tools:text="15:34" />
+
+        <Button
+            android:id="@+id/workPlus"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:maxLines="1"
+            android:onClick="@{()->viewModel.workTimeIncrease()}"
+            android:text="@string/plus_sign"
+            app:layout_constraintBaseline_toBaselineOf="@+id/workMinus"
+            app:layout_constraintEnd_toEndOf="@+id/workBar"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/setWorkTime" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/displayWorkTimeLeft"
+            animateBackground="@{viewModel.timerRunning}"
+            animateBackgroundStage="@{viewModel.inWorkingStage}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@{Converters.fromTenthsToSeconds(viewModel.workTimeLeft)}"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/workMinus"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/top"
+            tools:text="15:55" />
+
+        <Button
+            android:id="@+id/restMinus"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="8dp"
+            android:onClick="@{()->viewModel.restTimeDecrease()}"
+            android:text="@string/minus_sign"
+            app:layout_constraintBottom_toTopOf="@+id/restBar"
+            app:layout_constraintEnd_toStartOf="@+id/setRestTime"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="@id/restBar" />
+
+        <EditText
+            android:id="@+id/setRestTime"
+            clearOnFocusAndDispatch="@{()->viewModel.timePerRestSetChanged(setRestTime.getText())}"
+            hideKeyboardOnInputDone="@{true}"
+            loseFocusWhen="@{viewModel.timerRunning}"
+            android:layout_width="64dp"
+            android:layout_height="wrap_content"
+            android:digits=",.:0123456789"
+            android:imeOptions="actionDone"
+            android:inputType="time"
+            android:maxLines="1"
+            android:minHeight="48dp"
+            android:text="@{Converters.fromTenthsToSeconds(viewModel.timePerRestSet)}"
+            android:textAlignment="center"
+            app:layout_constraintBaseline_toBaselineOf="@+id/restMinus"
+            app:layout_constraintEnd_toStartOf="@+id/restPlus"
+            app:layout_constraintStart_toEndOf="@+id/restMinus"
+            tools:text="15:34" />
+
+        <Button
+            android:id="@+id/restPlus"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:onClick="@{()->viewModel.restTimeIncrease()}"
+            android:text="@string/plus_sign"
+            app:layout_constraintBaseline_toBaselineOf="@+id/restMinus"
+            app:layout_constraintEnd_toEndOf="@+id/restBar"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/setRestTime" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/displayRestTimeLeft"
+            animateBackground="@{viewModel.timerRunning}"
+            animateBackgroundStage="@{!viewModel.inWorkingStage}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@{Converters.fromTenthsToSeconds(viewModel.restTimeLeft)}"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/restMinus"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/workBar"
+            tools:text="15:55" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

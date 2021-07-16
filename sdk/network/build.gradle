@@ -24,10 +24,10 @@ android {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$pluginConfig.kotlin"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$buildConfig.kotlin"
     implementation "androidx.core:core-ktx:$deps.coreKtx"
 
-    testImplementation "junit:junit:$testConfig.junit"
-    androidTestImplementation "androidx.test.ext:junit:$testConfig.androidJunit"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$testConfig.espresso"
+    testImplementation "junit:junit:$deps.junit"
+    androidTestImplementation "androidx.test.ext:junit:$deps.androidJunit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$deps.espresso"
 }

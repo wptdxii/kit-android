@@ -2,10 +2,11 @@ buildscript {
     apply from: "config.gradle"
     repositories {
         google()
+        mavenCentral()
     }
     dependencies {
         //noinspection AndroidGradlePluginVersion
-        classpath 'com.android.tools.build:gradle:7.1.0-alpha02'
+        classpath 'com.android.tools.build:gradle:7.1.0-alpha03'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$buildConfig.kotlin"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$deps.hilt"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$deps.navigation"
@@ -35,6 +36,7 @@ spotless {
 allprojects {
     repositories {
         google()
+        mavenCentral()
 
         // for Timber snapshots
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }

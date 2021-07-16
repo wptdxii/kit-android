@@ -55,7 +55,7 @@ dependencies {
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$deps.hiltViewModel"
     kapt "androidx.hilt:hilt-compiler:$deps.hiltCompiler"
 
-    testImplementation "junit:junit:$testConfig.junit"
-    androidTestImplementation "androidx.test.ext:junit:$testConfig.androidJunit"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$testConfig.espresso"
+    testImplementation "junit:junit:$deps.junit"
+    androidTestImplementation "androidx.test.ext:junit:$deps.androidJunit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$deps.espresso"
 }

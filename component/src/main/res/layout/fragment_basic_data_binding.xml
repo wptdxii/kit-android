@@ -114,6 +114,18 @@
             app:layout_constraintStart_toStartOf="@+id/iv_avatar"
             app:layout_constraintTop_toBottomOf="@+id/tv_likes" />
 
+        <Button
+            android:id="@+id/btn_unlike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:onClick="@{() -> viewModle.onUnlike()}"
+            android:text="@string/unlike"
+            app:layout_constraintEnd_toEndOf="@+id/iv_avatar"
+            app:layout_constraintStart_toStartOf="@+id/iv_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/btn_like" />
+
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleHorizontal"
@@ -126,7 +138,7 @@
             app:hideIfZero="@{viewModle.likes}"
             app:layout_constraintEnd_toEndOf="@+id/btn_like"
             app:layout_constraintStart_toStartOf="@+id/btn_like"
-            app:layout_constraintTop_toBottomOf="@+id/btn_like"
+            app:layout_constraintTop_toBottomOf="@+id/btn_unlike"
             app:progressScaled="@{viewModle.likes}"
             app:progressTint="@{viewModle.popularity}"
             tools:progressBackgroundTint="@android:color/darker_gray" />

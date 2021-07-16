@@ -32,7 +32,7 @@ android {
 
 dependencies {
     api fileTree(dir: "libs", include: ["*.jar"])
-    api "org.jetbrains.kotlin:kotlin-stdlib:$buildConfig.kotlin"
+//    api "org.jetbrains.kotlin:kotlin-stdlib:$buildConfig.kotlin"
     api "androidx.core:core-ktx:$deps.coreKtx"
     api "androidx.appcompat:appcompat:$deps.appcompat"
     api "com.google.android.material:material:$deps.material"
@@ -42,33 +42,33 @@ dependencies {
     api "androidx.lifecycle:lifecycle-livedata-ktx:$deps.lifecycle"
     api "androidx.lifecycle:lifecycle-runtime-ktx:$deps.lifecycle"
     api "androidx.lifecycle:lifecycle-common-java8:$deps.lifecycle"
-
     api "androidx.lifecycle:lifecycle-process:$deps.lifecycle"
     api "androidx.lifecycle:lifecycle-viewmodel-savedstate:$deps.lifecycle"
 
-    api "androidx.startup:startup-runtime:1.0.0"
+    api  "androidx.datastore:datastore-preferences:$deps.datastore"
+
+    api "androidx.startup:startup-runtime:$deps.startup"
 
     api "androidx.navigation:navigation-fragment-ktx:$deps.navigation"
     api "androidx.navigation:navigation-ui-ktx:$deps.navigation"
 
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$deps.coroutines"
-    api "io.github.reactivecircus.flowbinding:flowbinding-android:1.1.0"
+    api "io.github.reactivecircus.flowbinding:flowbinding-android:$deps.flowBinding"
 
-    api "io.reactivex.rxjava3:rxjava:3.0.13"
-    api 'io.reactivex.rxjava3:rxandroid:3.0.0'
-    api 'com.jakewharton.rxbinding4:rxbinding:4.0.0'
-    api 'com.jakewharton.rxbinding4:rxbinding-appcompat:4.0.0'
+    api "io.reactivex.rxjava3:rxjava:$deps.rxJava"
+    api "io.reactivex.rxjava3:rxandroid:$deps.rxAndroid"
+    api "com.jakewharton.rxbinding4:rxbinding:$deps.rxBinding"
 
-    api 'com.jakewharton.timber:timber:4.8.0-SNAPSHOT'
-    api 'com.drakeet.multitype:multitype:4.2.0'
+    api "com.jakewharton.timber:timber:$deps.timber"
+    api "com.drakeet.multitype:multitype:$deps.multitype"
     api "com.gyf.immersionbar:immersionbar:${deps.immersionbar}"
     api "com.gyf.immersionbar:immersionbar-ktx:${deps.immersionbar}"
 
-    implementation 'com.orhanobut:logger:2.2.0'
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
+    implementation "com.orhanobut:logger:$deps.logger"
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$deps.leakcanary"
 
-    testImplementation "junit:junit:$testConfig.junit"
-    androidTestImplementation "androidx.test.ext:junit:$testConfig.androidJunit"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$testConfig.espresso"
+    testImplementation "junit:junit:$deps.junit"
+    androidTestImplementation "androidx.test.ext:junit:$deps.androidJunit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$deps.espresso"
 }
 apply from: '../../publish.gradle'

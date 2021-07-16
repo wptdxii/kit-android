@@ -10,10 +10,13 @@ import com.rocbillow.core.base.BaseFragment
 import com.rocbillow.core.binding.dataBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-private const val TAG = "Basic Data Binding"
 
 @AndroidEntryPoint
 class BasicDataBindingFragment : BaseFragment() {
+
+    companion object {
+        const val TAG = "Basic Data Binding"
+    }
 
     private var dataBinding by dataBinding<FragmentBasicDataBindingBinding>()
     private val viewModel by viewModels<BasicDataBindingViewModel>()
