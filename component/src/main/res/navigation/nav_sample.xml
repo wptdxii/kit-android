@@ -12,10 +12,18 @@
         tools:layout="@layout/fragment_sample">
         <action
             android:id="@+id/action_to_basic_data_binding"
-            app:destination="@id/basicDataBinding" />
+            app:destination="@id/basicDataBinding"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_to_two_way_data_binding"
-            app:destination="@+id/twoWayDataBinding" />
+            app:destination="@+id/twoWayDataBinding"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
