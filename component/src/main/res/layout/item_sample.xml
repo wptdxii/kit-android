@@ -6,7 +6,7 @@
 
         <variable
             name="sample"
-            type="com.rocbillow.component.sample.Sample" />
+            type="com.olaroc.component.sample.Sample" />
     </data>
 
     <FrameLayout

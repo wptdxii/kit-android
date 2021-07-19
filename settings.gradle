@@ -14,6 +14,6 @@ include ':sdk:network'
 include ':common'
 include ':kia'
 include ':app'
-include ':arch:sunflower'
+include ':arch'
 include ':component'
 rootProject.name = "Doraemon"

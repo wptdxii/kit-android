@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/sampleFragment"
-        android:name="com.rocbillow.component.sample.SampleFragment"
+        android:name="com.olaroc.component.sample.SampleFragment"
         android:label="Sample"
         tools:layout="@layout/fragment_sample">
         <action
@@ -28,12 +28,12 @@
 
     <fragment
         android:id="@+id/basicDataBinding"
-        android:name="com.rocbillow.component.sample.databinding.BasicDataBindingFragment"
+        android:name="com.olaroc.component.sample.databinding.BasicDataBindingFragment"
         android:label="Basic Data Binding"
         tools:layout="@layout/fragment_basic_data_binding" />
     <fragment
         android:id="@+id/twoWayDataBinding"
-        android:name="com.rocbillow.component.sample.databinding.TwoWayDataBindingFragment"
+        android:name="com.olaroc.component.sample.databinding.TwoWayDataBindingFragment"
         android:label="Two Way Data Binding"
         tools:layout="@layout/fragment_two_way_data_binding" />
 </navigation>

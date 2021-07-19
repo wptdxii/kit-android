@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.rocbillow.doraemon">
+    package="com.olaroc.doraemon">
 
     <application
-        android:name="com.rocbillow.doraemon.DoraemonApp"
+        android:name="com.olaroc.doraemon.DoraemonApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,10 +13,10 @@
         android:theme="@style/Theme.App"
         tools:ignore="AllowBackup">
         <activity
-            android:name="com.rocbillow.doraemon.ui.main.MainActivity"
+            android:name="com.olaroc.doraemon.ui.main.MainActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.rocbillow.doraemon.ui.splash.SplashActivity"
+            android:name="com.olaroc.doraemon.ui.splash.SplashActivity"
             android:theme="@style/Theme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

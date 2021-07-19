@@ -7,7 +7,7 @@
 
         <variable
             name="viewModle"
-            type="com.rocbillow.component.sample.databinding.BasicDataBindingViewModel" />
+            type="com.olaroc.component.sample.databinding.BasicDataBindingViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

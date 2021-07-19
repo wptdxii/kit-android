@@ -1,0 +1,8 @@
+package com.olaroc.component.sample.databinding
+
+import javax.inject.Inject
+import javax.inject.Singleton
+
+@Singleton
+class TwoWayBindingRepository @Inject constructor(private val prefsStore: PrefsStore) :
+    PrefsStore by prefsStore

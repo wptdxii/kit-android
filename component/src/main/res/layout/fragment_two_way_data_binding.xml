@@ -5,11 +5,11 @@
 
     <data>
 
-        <import type="com.rocbillow.component.sample.databinding.Converters" />
+        <import type="com.olaroc.component.sample.databinding.Converters" />
 
         <variable
             name="viewModel"
-            type="com.rocbillow.component.sample.databinding.TwoWayDataBindingViewModel" />
+            type="com.olaroc.component.sample.databinding.TwoWayDataBindingViewModel" />
 
     </data>
 

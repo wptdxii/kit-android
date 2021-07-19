@@ -16,7 +16,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.rocbillow.doraemon"
+        applicationId "com.olaroc.doraemon"
         minSdk buildConfig.minSdk
         targetSdk buildConfig.targetSdk
         versionCode buildConfig.versionCode
@@ -47,7 +47,7 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(':common')
-    implementation project(':arch:sunflower')
+    implementation project(':arch')
     implementation project(':component')
 
     implementation "com.google.dagger:hilt-android:$deps.hilt"
