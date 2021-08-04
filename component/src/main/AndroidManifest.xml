@@ -2,9 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.olaroc.component">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <application>
         <activity
-            android:name="com.olaroc.component.sample.SampleActivity"
+            android:name=".scan.ScanActivity"
+            android:exported="true" />
+        <activity
+            android:name=".sample.SampleActivity"
             android:exported="true" />
     </application>
 

@@ -12,7 +12,7 @@ import kotlinx.coroutines.delay
  * @date 2020-08-07
  */
 
-private const val PERSISTENT_PERIOD = 500L
+private const val PERSISTENT_PERIOD = 200L
 
 @AndroidEntryPoint
 class SplashActivity : BaseActivity() {

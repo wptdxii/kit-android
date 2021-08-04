@@ -2,6 +2,7 @@ package com.olaroc.doraemon.ui.main
 
 import androidx.fragment.app.activityViewModels
 import com.olaroc.component.sample.SampleActivity
+import com.olaroc.component.scan.ScanActivity
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -26,6 +27,7 @@ class ComponentFragment @Inject constructor() : BaseMainFragment() {
 class ComponentViewModel @Inject constructor() : BaseMainViewModel() {
 
     override fun createModules(): List<Module> = listOf(
-        Module("Sample", SampleActivity::class.java)
+        Module("Sample", SampleActivity::class.java),
+        Module("Scan", ScanActivity::class.java),
     )
 }

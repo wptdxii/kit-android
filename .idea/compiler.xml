@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.8">
-      <module name="Doraemon.app" target="11" />
-      <module name="Doraemon.arch" target="11" />
+    <bytecodeTargetLevel target="11">
       <module name="Doraemon.arch.sunflower" target="11" />
-      <module name="Doraemon.common" target="11" />
-      <module name="Doraemon.component" target="11" />
-      <module name="Doraemon.sdk.core" target="11" />
-      <module name="Doraemon.sdk.network" target="11" />
       <module name="Doraemon.sdk.scan" target="11" />
       <module name="Doraemon.sdk.uikit" target="11" />
     </bytecodeTargetLevel>

@@ -3,13 +3,16 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+
+        // Hms
+        maven {url 'https://developer.huawei.com/repo/'}
     }
     dependencies {
-        //noinspection AndroidGradlePluginVersion
-        classpath 'com.android.tools.build:gradle:7.1.0-alpha03'
+        classpath 'com.android.tools.build:gradle:7.1.0-alpha06'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$buildConfig.kotlin"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$deps.hilt"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$deps.navigation"
+        classpath 'com.huawei.agconnect:agcp:1.5.1.300'
     }
 }
 
@@ -43,6 +46,9 @@ allprojects {
 
         // for RxAndroid
         maven { url "https://oss.jfrog.org/libs-snapshot" }
+
+        // Hms
+        maven {url 'https://developer.huawei.com/repo/'}
     }
     task javadoc(type: Javadoc) {
         options.encoding = "utf-8"

@@ -1,13 +1,17 @@
 package com.olaroc.core.binding
 
 import android.view.View
+import android.view.ViewGroup
+import androidx.core.view.children
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
+import androidx.viewpager2.widget.ViewPager2
 import kotlin.properties.ReadOnlyProperty
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
@@ -28,8 +32,23 @@ abstract class AutoCleared<T : ViewBinding>(private val fragment: Fragment) {
                 val viewLifecycleOwner = it ?: return@Observer
 
                 viewLifecycleOwner.lifecycle.addObserver(object : DefaultLifecycleObserver {
+
                     override fun onDestroy(owner: LifecycleOwner) {
+                        clearAdapter(binding?.root)
                         binding = null
+                    }
+
+                    private fun clearAdapter(rootView: View?) {
+                        if (rootView == null) return
+
+                        val rootViewGroup = rootView as ViewGroup
+                        for (childView in rootViewGroup.children) {
+                            if (childView is RecyclerView) {
+                                childView.adapter = null
+                            } else if (childView is ViewPager2) {
+                                childView.adapter = null
+                            }
+                        }
                     }
                 })
             }

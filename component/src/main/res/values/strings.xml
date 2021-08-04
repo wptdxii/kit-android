@@ -12,4 +12,6 @@
     <string name="prefs_timePerWorkSet">SHARED_PREFS_TIME_PER_WORKSET</string>
     <string name="prefs_timePerRestSet">SHARED_PREFS_TIME_PER_RESTSET</string>
     <string name="prefs_numberOfSets">SHARED_PREFS_NUMBER_OF_SETS</string>
+    <string name="toolbar_title_scan">Scan</string>
+    <string name="hms_scankit">HMS ScanKit</string>
 </resources>
