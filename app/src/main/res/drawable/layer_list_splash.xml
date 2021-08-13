@@ -2,16 +2,13 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <item
-        android:width="375dp"
-        android:drawable="@android:color/white"
+        android:drawable="@color/colorPrimary"
         android:gravity="fill"
-        tools:height="667dp" />
-    <item
-        android:bottom="15dp"
-        android:gravity="bottom">
+        tools:height="667dp"
+        tools:width="375dp" />
+    <item>
         <bitmap
-            android:layout_height="wrap_content"
-            android:gravity="bottom"
+            android:gravity="center"
             android:src="@drawable/ic_splash_slogan" />
     </item>
 </layer-list>

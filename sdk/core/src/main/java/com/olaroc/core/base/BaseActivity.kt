@@ -3,7 +3,8 @@ package com.olaroc.core.base
 import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
-import com.gyf.immersionbar.ktx.immersionBar
+import com.olaroc.core.systembar.applyLightTheme
+import com.olaroc.core.systembar.applyNotFitsSystemWindows
 
 /**
  * @author olaroc
@@ -12,18 +13,15 @@ import com.gyf.immersionbar.ktx.immersionBar
 
 abstract class BaseActivity(@LayoutRes resId: Int) : AppCompatActivity(resId) {
 
-  constructor() : this(0)
+    constructor() : this(0)
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    immersion()
-  }
-
-  protected open fun immersion() {
-    immersionBar {
-      statusBarDarkFont(true)
-      navigationBarDarkIcon(true)
-      navigationBarColor(android.R.color.white)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        applySystemWindows()
     }
-  }
+
+    protected open fun applySystemWindows() {
+        applyNotFitsSystemWindows()
+        applyLightTheme()
+    }
 }

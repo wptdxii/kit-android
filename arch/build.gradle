@@ -16,6 +16,8 @@ android {
         minSdk buildConfig.minSdk
         targetSdk buildConfig.targetSdk
 
+        vectorDrawables.useSupportLibrary true
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }

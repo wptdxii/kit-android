@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="viewModle"
+            name="viewModel"
             type="com.olaroc.component.sample.databinding.BasicDataBindingViewModel" />
     </data>
 
@@ -15,11 +15,21 @@
         android:layout_height="match_parent"
         tools:context=".sample.databinding.BasicDataBindingFragment">
 
+        <androidx.constraintlayout.helper.widget.Layer
+            android:id="@+id/layer"
+            style="@style/Style.Toolbar.Layer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="toolbar"
+            tools:ignore="MissingConstraints" />
+
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             style="@style/Style.Toolbar"
-            tools:ignore="MissingConstraints"
-            tools:title="Toolbar" />
+            android:layout_width="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_name_label"
@@ -38,7 +48,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="128dp"
-            android:text="@{viewModle.name}"
+            android:text="@{viewModel.name}"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +71,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="128dp"
-            android:text="@{viewModle.lastname}"
+            android:text="@{viewModel.lastname}"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +88,7 @@
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            app:popularityIcon="@{viewModle.popularity}" />
+            app:popularityIcon="@{viewModel.popularity}" />
 
         <TextView
             android:id="@+id/tv_likes_label"
@@ -96,7 +106,7 @@
             android:id="@+id/tv_likes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{Integer.toString(viewModle.likes)}"
+            android:text="@{Integer.toString(viewModel.likes)}"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             app:layout_constraintEnd_toEndOf="@+id/tv_likes_label"
             app:layout_constraintStart_toStartOf="@+id/tv_likes_label"
@@ -108,7 +118,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
-            android:onClick="@{() -> viewModle.onLike()}"
+            android:onClick="@{() -> viewModel.onLike()}"
             android:text="@string/like"
             app:layout_constraintEnd_toEndOf="@+id/iv_avatar"
             app:layout_constraintStart_toStartOf="@+id/iv_avatar"
@@ -120,7 +130,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
-            android:onClick="@{() -> viewModle.onUnlike()}"
+            android:onClick="@{() -> viewModel.onUnlike()}"
             android:text="@string/unlike"
             app:layout_constraintEnd_toEndOf="@+id/iv_avatar"
             app:layout_constraintStart_toStartOf="@+id/iv_avatar"
@@ -135,12 +145,12 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:max="@{100}"
-            app:hideIfZero="@{viewModle.likes}"
+            app:hideIfZero="@{viewModel.likes}"
             app:layout_constraintEnd_toEndOf="@+id/btn_like"
             app:layout_constraintStart_toStartOf="@+id/btn_like"
             app:layout_constraintTop_toBottomOf="@+id/btn_unlike"
-            app:progressScaled="@{viewModle.likes}"
-            app:progressTint="@{viewModle.popularity}"
+            app:progressScaled="@{viewModel.likes}"
+            app:progressTint="@{viewModel.popularity}"
             tools:progressBackgroundTint="@android:color/darker_gray" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

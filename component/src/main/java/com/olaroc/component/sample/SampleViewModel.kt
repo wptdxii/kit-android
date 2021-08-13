@@ -30,6 +30,6 @@ class SampleViewModel @Inject constructor() : BaseViewModel() {
         Sample(
             TwoWayDataBindingFragment.TAG,
             SampleFragmentDirections.actionToTwoWayDataBinding()
-        )
+        ),
     )
 }

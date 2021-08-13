@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimary">@color/white</color>
+    <color name="colorPrimaryVariant">@color/white</color>
+    <color name="colorOnPrimary">@color/black</color>
+    <color name="colorSecondary">@color/black</color>
+    <color name="colorOnSecondary">@color/gray_900</color>
+    <color name="colorSecondaryVariant">@color/gray_900</color>
+    <color name="statusBarColor">@color/transparent</color>
+    <color name="navigationBarColor">@color/transparent</color>
+
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="gray_900">#212121</color>
     <color name="orange_900">#FFA726</color>
+    <color name="transparent">@android:color/transparent</color>
 </resources>

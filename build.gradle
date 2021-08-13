@@ -8,11 +8,11 @@ buildscript {
         maven {url 'https://developer.huawei.com/repo/'}
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.1.0-alpha06'
+        classpath "com.android.tools.build:gradle:$buildConfig.gradlePlugin"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$buildConfig.kotlin"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$deps.hilt"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$deps.navigation"
-        classpath 'com.huawei.agconnect:agcp:1.5.1.300'
+        classpath 'com.huawei.agconnect:agcp:1.6.0.300'
     }
 }
 

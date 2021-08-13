@@ -12,6 +12,10 @@ import com.olaroc.component.R
 import com.olaroc.component.databinding.FragmentSampleBinding
 import com.olaroc.core.base.BaseFragment
 import com.olaroc.core.binding.dataBinding
+import com.olaroc.core.systembar.applyNavigationBarInsetsToPadding
+import com.olaroc.core.systembar.applyStatusBarInsetsToMargin
+import com.olaroc.core.systembar.applyStatusBarInsetsToPadding
+import com.olaroc.core.systembar.isGestureNavigationEnable
 import com.olaroc.core.uikit.recyclerview.addLinearDivider
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -36,9 +40,19 @@ class SampleFragment : BaseFragment(R.layout.fragment_sample) {
         subScribeUi()
     }
 
+    override fun applySystemWindows() {
+        super.applySystemWindows()
+        with(dataBinding) {
+            layer.applyStatusBarInsetsToPadding()
+            toolbar.applyStatusBarInsetsToMargin()
+            recyclerView.applyNavigationBarInsetsToPadding()
+        }
+    }
+
     private fun bindUi() {
         dataBinding.toolbar.title = TAG
         with(dataBinding.recyclerView) {
+            clipToPadding = !context.isGestureNavigationEnable()
             adapter = sampleAdapter
             addLinearDivider()
             layoutManager = LinearLayoutManager(requireContext())

@@ -15,5 +15,15 @@ class SampleActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         dataBinding.executePendingBindings()
+//        ViewCompat.setOnApplyWindowInsetsListener(dataBinding.fragmentContainer) { view, insets ->
+//            var consumed = false
+//            (view as ViewGroup).forEach { child ->
+//                val childInsets = child.dispatchApplyWindowInsets(insets.toWindowInsets())
+//                if (childInsets.isConsumed) {
+//                    consumed = true
+//                }
+//            }
+//            if (consumed) WindowInsetsCompat.CONSUMED else insets
+//        }
     }
 }

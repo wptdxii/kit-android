@@ -17,17 +17,17 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class GardenActivity : BaseActivity() {
 
-  companion object {
-    const val TAG = "Sunflower"
-    fun start(context: Context) {
-      context.start<GardenActivity>()
+    companion object {
+        const val TAG = "Sunflower"
+        fun start(context: Context) {
+            context.start<GardenActivity>()
+        }
     }
-  }
 
-  private val dataBinding by dataBinding<ActivityGardenBinding>(R.layout.activity_garden)
+    private val dataBinding by dataBinding<ActivityGardenBinding>(R.layout.activity_garden)
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    dataBinding.executePendingBindings()
-  }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        dataBinding.executePendingBindings()
+    }
 }

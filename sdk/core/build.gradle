@@ -38,7 +38,8 @@ dependencies {
     api "com.google.android.material:material:$deps.material"
     api "androidx.constraintlayout:constraintlayout:$deps.constraintLayout"
     api "androidx.viewpager2:viewpager2:$deps.viewpager2"
-    api "androidx.paging:paging-runtime:$deps.paging"
+    api "androidx.swiperefreshlayout:swiperefreshlayout:$deps.swipeRefreshLayout"
+    api "androidx.paging:paging-runtime-ktx:$deps.paging"
 
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:$deps.lifecycle"
     api "androidx.lifecycle:lifecycle-livedata-ktx:$deps.lifecycle"
@@ -63,9 +64,10 @@ dependencies {
 
     api "com.jakewharton.timber:timber:$deps.timber"
     api "com.drakeet.multitype:multitype:$deps.multitype"
-    api "com.gyf.immersionbar:immersionbar:${deps.immersionbar}"
-    api "com.gyf.immersionbar:immersionbar-ktx:${deps.immersionbar}"
-    api "com.guolindev.permissionx:permissionx:${deps.permissionX}"
+    api "com.gyf.immersionbar:immersionbar:$deps.immersionbar"
+    api "com.gyf.immersionbar:immersionbar-ktx:$deps.immersionbar"
+    api "com.guolindev.permissionx:permissionx:$deps.permissionX"
+    api "dev.chrisbanes.insetter:insetter-dbx:$deps.insetter"
 
     implementation "com.orhanobut:logger:$deps.logger"
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$deps.leakcanary"

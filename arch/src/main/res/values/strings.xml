@@ -1,5 +1,7 @@
 <resources>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="my_garden_title">My garden</string>
+    <string name="plants_title">Plants</string>
+    <string name="sunflower_title">Sunflower</string>
+    <string name="garden_empty">Your garden is empty</string>
+    <string name="add_plant">Add plant</string>
 </resources>

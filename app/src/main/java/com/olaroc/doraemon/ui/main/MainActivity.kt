@@ -14,10 +14,14 @@ import androidx.lifecycle.Lifecycle
 import com.olaroc.core.base.BaseActivity
 import com.olaroc.core.binding.viewBinding
 import com.olaroc.core.extension.start
+import com.olaroc.core.systembar.applyNavigationBarInsetsToPadding
+import com.olaroc.core.systembar.applyStatusBarInsetsToMargin
+import com.olaroc.core.systembar.applyStatusBarInsetsToPadding
 import com.olaroc.core.uikit.toast.toast
 import com.olaroc.doraemon.R
 import com.olaroc.doraemon.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import dev.chrisbanes.insetter.applyInsetter
 import javax.inject.Inject
 import dagger.Lazy as DaggerLazy
 
@@ -51,11 +55,22 @@ class MainActivity : BaseActivity() {
 
     private val viewModel: MainViewModel by viewModels()
     private val viewBinding: ActivityMainBinding by viewBinding { ActivityMainBinding.inflate(it) }
+    private var isClickedOnce: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindUi()
         selectFragment(viewModel.activeFragment)
+    }
+
+    override fun applySystemWindows() {
+        super.applySystemWindows()
+        with(viewBinding) {
+            layer.applyStatusBarInsetsToPadding()
+            toolbar.applyStatusBarInsetsToMargin()
+            navView.applyStatusBarInsetsToPadding()
+            bottomNav.applyNavigationBarInsetsToPadding()
+        }
     }
 
     private fun bindUi() {
@@ -97,18 +112,20 @@ class MainActivity : BaseActivity() {
         with(viewBinding) {
             bottomNav.selectedItemId = getItemId(viewModel.activeFragment)
             toolbar.title = viewModel.activeFragment
-            bottomNav.setOnNavigationItemSelectedListener { menuItem ->
+            bottomNav.setOnItemSelectedListener { menuItem ->
                 selectBottomNavigationViewItem(menuItem)
             }
         }
     }
 
-    private fun ActivityMainBinding.selectBottomNavigationViewItem(menuItem: MenuItem): Boolean {
+    private fun selectBottomNavigationViewItem(menuItem: MenuItem): Boolean {
         val tag = getTagByMenuItem(menuItem)
         selectFragment(tag)
         viewModel.activeFragment = tag
-        toolbar.title = tag
-        navView.setCheckedItem(getItemId(tag))
+        with(viewBinding) {
+            toolbar.title = tag
+            navView.setCheckedItem(getItemId(tag))
+        }
         return true
     }
 
@@ -160,11 +177,14 @@ class MainActivity : BaseActivity() {
     private fun invalidateTag(tag: String): Nothing =
         throw IllegalArgumentException("Fragment with tag $tag not exists.")
 
-    override fun onBackPressed() = pressAgainToExit()
+    override fun onBackPressed() {
+        with(viewBinding.drawerLayout) {
+            if (isOpen) {
+                close()
+                return
+            }
+        }
 
-    private var isClickedOnce: Boolean = false
-
-    private fun pressAgainToExit() {
         if (isClickedOnce) {
             super.onBackPressed()
             return
@@ -174,4 +194,5 @@ class MainActivity : BaseActivity() {
         R.string.toast_msg_app_exit.toast()
         viewBinding.root.postDelayed({ isClickedOnce = false }, 2000)
     }
+
 }

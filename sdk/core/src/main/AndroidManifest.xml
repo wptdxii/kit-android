@@ -12,5 +12,12 @@
                 android:name="com.olaroc.core.initializer.StartupInitializer"
                 android:value="androidx.startup" />
         </provider>
+
+        <meta-data
+            android:name="android.notch_support"
+            android:value="true" />
+        <meta-data
+            android:name="notch.config"
+            android:value="portrait|landscape" />
     </application>
 </manifest>

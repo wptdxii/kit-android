@@ -1,6 +1,9 @@
 package com.olaroc.core.base
 
+import android.os.Bundle
+import android.view.View
 import androidx.annotation.LayoutRes
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 
 /**
@@ -9,5 +12,13 @@ import androidx.fragment.app.Fragment
  */
 abstract class BaseFragment(@LayoutRes resId: Int) : Fragment(resId) {
 
-  constructor() : this(0)
+    constructor() : this(0)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        applySystemWindows()
+        ViewCompat.requestApplyInsets(view)
+    }
+
+    protected open fun applySystemWindows() {}
 }

@@ -7,6 +7,9 @@ import com.olaroc.component.R
 import com.olaroc.component.databinding.FragmentTwoWayDataBindingBinding
 import com.olaroc.core.base.BaseFragment
 import com.olaroc.core.binding.dataBinding
+import com.olaroc.core.systembar.applyNavigationBarInsetsToPadding
+import com.olaroc.core.systembar.applyStatusBarInsetsToMargin
+import com.olaroc.core.systembar.applyStatusBarInsetsToPadding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,9 +34,15 @@ class TwoWayDataBindingFragment : BaseFragment(R.layout.fragment_two_way_data_bi
         bindUi()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+    override fun applySystemWindows() {
+        super.applySystemWindows()
+        with(dataBinding) {
+            layer.applyStatusBarInsetsToPadding()
+            toolbar.applyStatusBarInsetsToMargin()
+            root.applyNavigationBarInsetsToPadding()
+        }
     }
+
 
     private fun bindUi() {
         dataBinding.viewModel = viewModel

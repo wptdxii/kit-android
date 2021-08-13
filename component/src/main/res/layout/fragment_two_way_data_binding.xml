@@ -17,11 +17,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.constraintlayout.helper.widget.Layer
+            android:id="@+id/layer"
+            style="@style/Style.Toolbar.Layer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="toolbar"
+            tools:ignore="MissingConstraints" />
+
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             style="@style/Style.Toolbar"
-            tools:ignore="MissingConstraints"
-            tools:title="Toolbar" />
+            android:layout_width="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.helper.widget.Flow
             android:id="@+id/top"

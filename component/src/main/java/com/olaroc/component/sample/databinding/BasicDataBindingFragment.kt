@@ -8,6 +8,8 @@ import androidx.fragment.app.viewModels
 import com.olaroc.component.databinding.FragmentBasicDataBindingBinding
 import com.olaroc.core.base.BaseFragment
 import com.olaroc.core.binding.dataBinding
+import com.olaroc.core.systembar.applyStatusBarInsetsToMargin
+import com.olaroc.core.systembar.applyStatusBarInsetsToPadding
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -34,8 +36,16 @@ class BasicDataBindingFragment : BaseFragment() {
         subscribeUi()
     }
 
+    override fun applySystemWindows() {
+        super.applySystemWindows()
+        with(dataBinding) {
+            layer.applyStatusBarInsetsToPadding()
+            toolbar.applyStatusBarInsetsToMargin()
+        }
+    }
+
     private fun bindUi() {
-        dataBinding.viewModle = viewModel
+        dataBinding.viewModel = viewModel
         dataBinding.toolbar.title = TAG
     }
 
