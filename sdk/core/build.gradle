@@ -32,14 +32,21 @@ android {
 
 dependencies {
     api fileTree(dir: "libs", include: ["*.jar"])
-//    api "org.jetbrains.kotlin:kotlin-stdlib:$buildConfig.kotlin"
+    api "org.jetbrains.kotlin:kotlin-stdlib:$buildConfig.kotlin"
     api "androidx.core:core-ktx:$deps.coreKtx"
     api "androidx.appcompat:appcompat:$deps.appcompat"
+    api "androidx.activity:activity-ktx:$deps.activityKtx"
+    api "androidx.fragment:fragment-ktx:$deps.fragmentKtx"
+    api "androidx.collection:collection-ktx:$deps.collectionKtx"
+
     api "com.google.android.material:material:$deps.material"
     api "androidx.constraintlayout:constraintlayout:$deps.constraintLayout"
     api "androidx.viewpager2:viewpager2:$deps.viewpager2"
     api "androidx.swiperefreshlayout:swiperefreshlayout:$deps.swipeRefreshLayout"
     api "androidx.paging:paging-runtime-ktx:$deps.paging"
+//    api "androidx.core:core-splashscreen:$deps.splashScreen"
+    api "androidx.navigation:navigation-fragment-ktx:$deps.navigation"
+    api "androidx.navigation:navigation-ui-ktx:$deps.navigation"
 
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:$deps.lifecycle"
     api "androidx.lifecycle:lifecycle-livedata-ktx:$deps.lifecycle"
@@ -49,18 +56,22 @@ dependencies {
     api "androidx.lifecycle:lifecycle-viewmodel-savedstate:$deps.lifecycle"
 
     api "androidx.datastore:datastore-preferences:$deps.datastore"
-
     api "androidx.startup:startup-runtime:$deps.startup"
-
-    api "androidx.navigation:navigation-fragment-ktx:$deps.navigation"
-    api "androidx.navigation:navigation-ui-ktx:$deps.navigation"
 
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$deps.coroutines"
     api "io.github.reactivecircus.flowbinding:flowbinding-android:$deps.flowBinding"
 
+    api "com.squareup.retrofit2:retrofit:$deps.retrofit"
+    api "com.squareup.retrofit2:converter-moshi:$deps.retrofit"
+    api "com.squareup.moshi:moshi-kotlin:$deps.moshi"
+    api "com.squareup.okhttp3:okhttp:$deps.okhttp"
+    api "com.squareup.okhttp3:logging-interceptor:$deps.okhttp"
+    testApi "com.squareup.okhttp3:mockwebserver:$deps.okhttp"
+
     api "io.reactivex.rxjava3:rxjava:$deps.rxJava"
     api "io.reactivex.rxjava3:rxandroid:$deps.rxAndroid"
     api "com.jakewharton.rxbinding4:rxbinding:$deps.rxBinding"
+    api "com.uber.autodispose2:autodispose-interop-coroutines:$deps.autoDispose"
 
     api "com.jakewharton.timber:timber:$deps.timber"
     api "com.drakeet.multitype:multitype:$deps.multitype"

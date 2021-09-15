@@ -1,10 +1,13 @@
 package com.olaroc.core.initializer
 
+import com.olaroc.core.BuildConfig
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.LogAdapter
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
-import com.olaroc.core.BuildConfig
+import org.json.JSONArray
+import org.json.JSONObject
+import org.json.JSONTokener
 import timber.log.Timber
 
 /**
@@ -38,7 +41,7 @@ class TimberDebugTree : Timber.DebugTree() {
     }
 
     override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
-        if (isJson(message)) {
+        if (message.isJson()) {
             Logger.t(tag)
             Logger.json(message)
             return
@@ -46,7 +49,21 @@ class TimberDebugTree : Timber.DebugTree() {
         Logger.log(priority, tag, message, t)
     }
 
-    private fun isJson(message: String): Boolean = with(message) {
-        startsWith("{") && endsWith("}")
+    private fun String.isJson(): Boolean {
+        val result = trimIndent()
+        if (result.isNotJsonObject() && result.isNotJsonArray()) return false
+        return runCatching {
+            val nextValue = JSONTokener(result).nextValue()
+            nextValue is JSONObject || nextValue is JSONArray
+        }.getOrElse {
+            false
+        }
     }
+
+
+    private fun String.isNotJsonObject(): Boolean =
+        !(startsWith("{") && endsWith("}"))
+
+    private fun String.isNotJsonArray(): Boolean =
+        !(startsWith("[") && endsWith("]"))
 }

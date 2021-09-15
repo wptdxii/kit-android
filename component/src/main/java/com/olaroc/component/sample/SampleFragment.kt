@@ -40,8 +40,8 @@ class SampleFragment : BaseFragment(R.layout.fragment_sample) {
         subScribeUi()
     }
 
-    override fun applySystemWindows() {
-        super.applySystemWindows()
+    override fun applyWindowInsets() {
+        super.applyWindowInsets()
         with(dataBinding) {
             layer.applyStatusBarInsetsToPadding()
             toolbar.applyStatusBarInsetsToMargin()

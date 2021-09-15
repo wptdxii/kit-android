@@ -34,8 +34,8 @@ class TwoWayDataBindingFragment : BaseFragment(R.layout.fragment_two_way_data_bi
         bindUi()
     }
 
-    override fun applySystemWindows() {
-        super.applySystemWindows()
+    override fun applyWindowInsets() {
+        super.applyWindowInsets()
         with(dataBinding) {
             layer.applyStatusBarInsetsToPadding()
             toolbar.applyStatusBarInsetsToMargin()

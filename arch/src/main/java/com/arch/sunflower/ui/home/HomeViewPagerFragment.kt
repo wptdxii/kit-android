@@ -4,15 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import com.arch.sunflower.R
 import com.arch.sunflower.databinding.FragmentHomeViewPagerBinding
+import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.olaroc.core.base.BaseFragment
 import com.olaroc.core.binding.dataBinding
-import com.olaroc.core.systembar.applyStatusBarInsetsToPadding
 import com.olaroc.core.uikit.AppbarLayoutOffsetChangedListener
 import com.olaroc.core.uikit.State
 import dagger.hilt.android.AndroidEntryPoint
+import dev.chrisbanes.insetter.windowInsetTypesOf
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -32,9 +36,27 @@ class HomeViewPagerFragment @Inject constructor() : BaseFragment() {
         bindUi()
     }
 
-    override fun applySystemWindows() {
-        super.applySystemWindows()
-        dataBinding.appBarLayout.applyStatusBarInsetsToPadding()
+    override fun applyWindowInsets() {
+        super.applyWindowInsets()
+        ViewCompat.setOnApplyWindowInsetsListener(dataBinding.appBarLayout) { view, insets ->
+            val top = insets.getInsets(windowInsetTypesOf(statusBars = true)).top
+            val behavior = dataBinding.appBarLayout.behavior as AppBarLayout.Behavior
+            behavior.topAndBottomOffset = behavior.topAndBottomOffset - top
+            behavior.isVerticalOffsetEnabled = true
+            view.updatePadding(top = top)
+            WindowInsetsCompat.CONSUMED
+        }
+//        dataBinding.appBarLayout.applyStatusBarInsetsToPadding()
+//        dataBinding.appBarLayout.applyStatusBarInsetsToPadding()
+//        ViewCompat.setOnApplyWindowInsetsListener(dataBinding.appBarLayout) { view, insets ->
+//            view.updatePadding(top = insets.getInsets(windowInsetTypesOf(statusBars = true)).top)
+//            dataBinding.appBarLayout.behavior.onApplyWindowInsets(
+//                dataBinding.coordinatorLayout,
+//                dataBinding.appBarLayout,
+//                insets
+//            )
+//            insets
+//        }
     }
 
     private fun bindUi() {
