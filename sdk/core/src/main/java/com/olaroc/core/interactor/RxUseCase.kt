@@ -7,7 +7,9 @@ import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.core.Single
 import kotlinx.coroutines.CoroutineScope
 
-
+/**
+ * Need add RxJava3CallAdapterFactory to Retrofit first.
+ */
 abstract class RxUseCase<in P, R>(private val scheduler: Scheduler) {
 
     abstract fun execute(params: P): Single<Result<R>>
@@ -18,7 +20,7 @@ abstract class RxUseCase<in P, R>(private val scheduler: Scheduler) {
     ): SingleSubscribeProxy<Result<R>> =
         execute(params)
             .onErrorResumeNext { Single.just(Result.Failure(it)) }
-            .observeOn(scheduler)
-            .subscribeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(scheduler)
+            .observeOn(AndroidSchedulers.mainThread())
             .autoDispose(viewModelScope)
 }

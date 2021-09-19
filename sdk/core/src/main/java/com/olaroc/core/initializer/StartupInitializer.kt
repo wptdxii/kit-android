@@ -2,8 +2,8 @@ package com.olaroc.core.initializer
 
 import android.content.Context
 import androidx.startup.Initializer
-import com.olaroc.core.BuildConfig
 import com.olaroc.core.assist.ContextProvider
+import com.olaroc.core.extension.isDebug
 import timber.log.Timber
 
 /**
@@ -12,22 +12,19 @@ import timber.log.Timber
  */
 class StartupInitializer : Initializer<Unit> {
 
-  override fun create(context: Context) {
-    startupContextProvider(context)
-    startupTimber()
-  }
-
-  override fun dependencies(): List<Class<out Initializer<*>>> = emptyList()
-
-  private fun startupContextProvider(context: Context) {
-    ContextProvider.attach(context)
-  }
-
-  private fun startupTimber() {
-    if (BuildConfig.DEBUG) {
-      Timber.plant(TimberDebugTree())
-    } else {
-      Timber.plant(TimberReleaseTree())
+    override fun create(context: Context) {
+        initContextProvider(context)
+        initTimber(context.isDebug)
     }
-  }
+
+    override fun dependencies(): List<Class<out Initializer<*>>> = emptyList()
+
+    private fun initContextProvider(context: Context) {
+        ContextProvider.attach(context)
+    }
+
+    private fun initTimber(debug: Boolean) {
+        val tree = if (debug) TimberDebugTree() else TimberReleaseTree()
+        Timber.plant(tree)
+    }
 }

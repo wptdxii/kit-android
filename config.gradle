@@ -4,7 +4,7 @@ ext {
             'versionCode' : 1,
             'javaVersion' : JavaVersion.VERSION_11,
             'jvm'         : '11',
-            'gradlePlugin': '7.1.0-alpha11',
+            'gradlePlugin': '7.1.0-alpha12',
             'kotlin'      : '1.5.30',
             'minSdk'      : 23,
             'targetSdk'   : 30,
